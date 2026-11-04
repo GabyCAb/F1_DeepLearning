@@ -218,175 +218,238 @@
   },
   "predictions": [
     {
-      "round": 13,
-      "race_name": "Italian Grand Prix",
-      "date": "2026-09-06",
+      "round": 20,
+      "race_name": "Brazilian Grand Prix",
+      "date": "2026-11-08",
       "drivers": [
         {
-          "driver": "Russell",
-          "constructor": "Mercedes",
-          "prob": 0.7575
+          "driver": "Hamilton",
+          "constructor": "Ferrari",
+          "prob": 0.8054
         },
         {
           "driver": "Leclerc",
           "constructor": "Ferrari",
-          "prob": 0.7476
+          "prob": 0.8021
         },
         {
-          "driver": "Antonelli",
+          "driver": "Russell",
           "constructor": "Mercedes",
-          "prob": 0.7468
-        },
-        {
-          "driver": "Hamilton",
-          "constructor": "Ferrari",
-          "prob": 0.7371
-        },
-        {
-          "driver": "Norris",
-          "constructor": "McLaren",
-          "prob": 0.7306
-        },
-        {
-          "driver": "Piastri",
-          "constructor": "McLaren",
-          "prob": 0.7282
+          "prob": 0.7963
         },
         {
           "driver": "Max Verstappen",
           "constructor": "Red Bull",
-          "prob": 0.7075
+          "prob": 0.7845
         },
         {
-          "driver": "Lawson",
+          "driver": "Norris",
+          "constructor": "McLaren",
+          "prob": 0.7777
+        },
+        {
+          "driver": "Antonelli",
+          "constructor": "Mercedes",
+          "prob": 0.7769
+        },
+        {
+          "driver": "Piastri",
+          "constructor": "McLaren",
+          "prob": 0.7645
+        },
+        {
+          "driver": "Hadjar",
           "constructor": "Red Bull",
-          "prob": 0.6325
+          "prob": 0.7121
         },
         {
-          "driver": "Hulkenberg",
+          "driver": "Gasly",
+          "constructor": "Alpine",
+          "prob": 0.5955
+        },
+        {
+          "driver": "Hülkenberg",
           "constructor": "Audi",
-          "prob": 0.5402
-        },
-        {
-          "driver": "Arvid Lindblad",
-          "constructor": "RB",
-          "prob": 0.4782
+          "prob": 0.5683
         }
       ]
     },
     {
-      "round": 14,
-      "race_name": "Spanish Grand Prix",
-      "date": "2026-09-13",
+      "round": 21,
+      "race_name": "Las Vegas Grand Prix",
+      "date": "2026-11-22",
       "drivers": [
-        {
-          "driver": "Russell",
-          "constructor": "Mercedes",
-          "prob": 0.794
-        },
         {
           "driver": "Leclerc",
           "constructor": "Ferrari",
-          "prob": 0.7869
+          "prob": 0.8046
         },
         {
-          "driver": "Antonelli",
+          "driver": "Russell",
           "constructor": "Mercedes",
-          "prob": 0.7854
+          "prob": 0.7988
         },
         {
           "driver": "Hamilton",
           "constructor": "Ferrari",
-          "prob": 0.7704
+          "prob": 0.7938
+        },
+        {
+          "driver": "Antonelli",
+          "constructor": "Mercedes",
+          "prob": 0.7826
         },
         {
           "driver": "Norris",
           "constructor": "McLaren",
-          "prob": 0.7647
-        },
-        {
-          "driver": "Piastri",
-          "constructor": "McLaren",
-          "prob": 0.7641
+          "prob": 0.7756
         },
         {
           "driver": "Max Verstappen",
           "constructor": "Red Bull",
-          "prob": 0.7379
+          "prob": 0.774
         },
         {
-          "driver": "Lawson",
+          "driver": "Piastri",
+          "constructor": "McLaren",
+          "prob": 0.7617
+        },
+        {
+          "driver": "Hadjar",
           "constructor": "Red Bull",
-          "prob": 0.6652
+          "prob": 0.7035
         },
         {
-          "driver": "Hulkenberg",
+          "driver": "Gasly",
+          "constructor": "Alpine",
+          "prob": 0.5868
+        },
+        {
+          "driver": "Hülkenberg",
           "constructor": "Audi",
-          "prob": 0.5621
-        },
-        {
-          "driver": "Arvid Lindblad",
-          "constructor": "RB",
-          "prob": 0.5164
+          "prob": 0.5461
         }
       ]
     },
     {
-      "round": 15,
-      "race_name": "Azerbaijan Grand Prix",
-      "date": "2026-09-26",
+      "round": 22,
+      "race_name": "Qatar Grand Prix",
+      "date": "2026-11-29",
       "drivers": [
-        {
-          "driver": "Russell",
-          "constructor": "Mercedes",
-          "prob": 0.7836
-        },
         {
           "driver": "Leclerc",
           "constructor": "Ferrari",
-          "prob": 0.783
+          "prob": 0.7716
         },
         {
-          "driver": "Antonelli",
+          "driver": "Russell",
           "constructor": "Mercedes",
-          "prob": 0.7787
-        },
-        {
-          "driver": "Piastri",
-          "constructor": "McLaren",
-          "prob": 0.7622
+          "prob": 0.7553
         },
         {
           "driver": "Hamilton",
           "constructor": "Ferrari",
-          "prob": 0.7615
+          "prob": 0.7492
         },
         {
           "driver": "Norris",
           "constructor": "McLaren",
-          "prob": 0.7557
+          "prob": 0.7326
+        },
+        {
+          "driver": "Piastri",
+          "constructor": "McLaren",
+          "prob": 0.7256
+        },
+        {
+          "driver": "Antonelli",
+          "constructor": "Mercedes",
+          "prob": 0.6801
         },
         {
           "driver": "Max Verstappen",
           "constructor": "Red Bull",
-          "prob": 0.7335
+          "prob": 0.6773
         },
         {
-          "driver": "Lawson",
+          "driver": "Hadjar",
           "constructor": "Red Bull",
-          "prob": 0.6381
+          "prob": 0.5825
         },
         {
-          "driver": "Hulkenberg",
+          "driver": "Hülkenberg",
           "constructor": "Audi",
-          "prob": 0.5867
+          "prob": 0.46
         },
         {
-          "driver": "Arvid Lindblad",
-          "constructor": "RB",
-          "prob": 0.4853
+          "driver": "Gasly",
+          "constructor": "Alpine",
+          "prob": 0.4434
+        }
+      ]
+    },
+    {
+      "round": 23,
+      "race_name": "Abu Dhabi Grand Prix",
+      "date": "2026-12-06",
+      "drivers": [
+        {
+          "driver": "Leclerc",
+          "constructor": "Ferrari",
+          "prob": 0.8196
+        },
+        {
+          "driver": "Russell",
+          "constructor": "Mercedes",
+          "prob": 0.812
+        },
+        {
+          "driver": "Hamilton",
+          "constructor": "Ferrari",
+          "prob": 0.8086
+        },
+        {
+          "driver": "Norris",
+          "constructor": "McLaren",
+          "prob": 0.7886
+        },
+        {
+          "driver": "Piastri",
+          "constructor": "McLaren",
+          "prob": 0.7766
+        },
+        {
+          "driver": "Antonelli",
+          "constructor": "Mercedes",
+          "prob": 0.7562
+        },
+        {
+          "driver": "Max Verstappen",
+          "constructor": "Red Bull",
+          "prob": 0.7408
+        },
+        {
+          "driver": "Hadjar",
+          "constructor": "Red Bull",
+          "prob": 0.6569
+        },
+        {
+          "driver": "Gasly",
+          "constructor": "Alpine",
+          "prob": 0.4942
+        },
+        {
+          "driver": "Hülkenberg",
+          "constructor": "Audi",
+          "prob": 0.4921
         }
       ]
     }
-  ]
+  ],
+  "data_status": {
+    "last_round": 19,
+    "last_race": "Mexico City Grand Prix",
+    "season_eval_auc_2026": 0.8319,
+    "season_eval_acc_2026": 0.7608
+  }
 }

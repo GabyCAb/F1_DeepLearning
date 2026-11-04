@@ -12,7 +12,7 @@ Essa é uma classificação binária: `1` = terminou no Top 10, `0` = não termi
 
 - **API:** [jolpica-f1](https://github.com/jolpica/jolpica-f1) — sucessor open-source e comunitário da antiga Ergast Developer API, disponível em `api.jolpi.ca`.
 - **Arquivos usados:** `results.csv` (26.137 linhas — um piloto por corrida, 1950 a 2026) e `races.csv` (calendário e circuitos: localização, latitude/longitude).
-- **Atualização:** os dados foram complementados manualmente via a API para cobrir até o GP da Holanda (23/08/2026), já que o dataset original (Kaggle, `fleongg/formula-1-results-and-standings-1950-present`) estava parado no GP de Mônaco (07/06/2026).
+- **Atualização:** os dados foram complementados via a API para cobrir até o **GP da Cidade do México (01/11/2026, rodada 19)**, já que o dataset original (Kaggle, `fleongg/formula-1-results-and-standings-1950-present`) estava parado no GP de Mônaco (07/06/2026). A última atualização (04/11/2026) também corrigiu o calendário de 2026, que passou a ter 23 etapas com a inclusão do "Bahrain Grand Prix in Malaysia" (Sepang, rodada 16) — com isso o GP do Brasil virou a rodada 20.
 - **Licença:** CC BY-NC-SA 4.0 (uso não comercial, com atribuição) — projeto de fins educacionais.
 
 ## Por que "Top 10" e não "pontuação"
@@ -100,9 +100,28 @@ O grid de largada é, isoladamente, um forte preditor (quem larga na frente tend
 
 ### Previsão para corridas futuras (demonstração de uso)
 
-Como aplicação prática, o modelo foi usado para estimar o Top 10 das 3 próximas corridas da temporada 2026 (GP da Itália, GP da Espanha em Madri, GP do Azerbaijão), usando a forma da temporada até o GP da Holanda (última corrida disputada). Resultado consistente entre as três corridas: Russell, Leclerc e Antonelli disputando o topo, Hamilton, Norris e Piastri completando o grupo de ponta, Verstappen e Lawson garantindo a zona de pontos, e uma disputa mais incerta entre Hulkenberg e Lindblad pela 9ª/10ª posição (probabilidades entre 48% e 59%).
+Como aplicação prática, o modelo salvo é usado para estimar a probabilidade de Top 10 nas próximas corridas de 2026, com a forma da temporada até a última corrida disputada. A previsão é feita pelo script `prever_proximas_corridas.py`, que reproduz exatamente o pré-processamento do notebook (as probabilidades antigas foram reproduzidas com diferença < 1e-7) e carrega `f1_top10_model.keras` sem retreinar.
 
-**Limitação importante dessa previsão:** como o treino classificatório dessas corridas ainda não aconteceu, o `grid` real foi substituído pela média de grid do piloto na temporada — ou seja, é uma projeção da tendência atual de desempenho, não uma previsão definitiva do resultado do fim de semana. O ideal é rodar o modelo novamente com o grid real assim que o qualifying de cada corrida acontecer.
+**Atualização de 04/11/2026 — forma até o GP do México (rodada 19):**
+
+| Corrida | Top 10 previsto (em ordem de probabilidade) | Disputa pela 10ª vaga |
+|---|---|---|
+| GP do Brasil (rodada 20, 08/11) | Hamilton 80,5%, Leclerc 80,2%, Russell 79,6%, Verstappen 78,5%, Norris 77,8%, Antonelli 77,7%, Piastri 76,5%, Hadjar 71,2%, Gasly 59,6%, Hülkenberg 56,8% | Lawson 53,3%, Lindblad 52,5%, Colapinto 49,3% |
+| GP de Las Vegas (rodada 21, 22/11) | Leclerc, Russell, Hamilton, Antonelli, Norris, Verstappen, Piastri, Hadjar, Gasly, Hülkenberg | Lindblad 54%, Lawson 53% |
+| GP do Catar (rodada 22, 29/11) | Leclerc, Russell, Hamilton, Norris, Piastri, Antonelli, Verstappen, Hadjar, Hülkenberg, Gasly | Lawson 40%, Lindblad 38% |
+| GP de Abu Dhabi (rodada 23, 06/12) | Leclerc, Russell, Hamilton, Norris, Piastri, Antonelli, Verstappen, Hadjar, Gasly, Hülkenberg | Lawson 45%, Lindblad 45% |
+
+Probabilidades completas (todos os 22 pilotos, mais uma variante "forma recente" que usa o grid médio das últimas 5 corridas) em `predicoes_proximas_corridas_2026.csv`.
+
+As quatro equipes de ponta (Mercedes, Ferrari, McLaren, Red Bull) ocupam as 8 primeiras vagas com folga (65%–82%); as duas últimas são uma disputa aberta entre Alpine, Audi e Racing Bulls, quase sempre na faixa de 45%–60%, ou seja, praticamente cara ou coroa.
+
+**Mudanças de escalação consideradas:** Hadjar no lugar de Lawson na Red Bull e Lawson na Racing Bulls (desde a rodada 15); Tsunoda fora do grid. Na Haas, Esteban Ocon foi afastado pelo resto de 2026 e o brasileiro **Rafael Câmara** estreia no GP do Brasil (a Haas só confirmou Câmara para o Brasil até 03/11; ele foi mantido nas demais etapas por hipótese — ajuste `SUBSTITUICOES` no script se mudar). Como estreante, Câmara não tem histórico na temporada, então recebe a média de grid e de posição do carro da Haas em 2026.
+
+**Como as previsões anteriores se saíram:** a projeção feita com dados até a Holanda acertou 7 de 10 pilotos no Top 10 da Itália, 9 de 10 na Espanha e 6 de 10 no Azerbaijão. Avaliado com o grid real nas 7 corridas novas (rodadas 13–19, 154 corridas-piloto), o modelo teve acurácia de 79,2% e AUC de 0,849 — em linha com o teste original. No conjunto de teste completo atualizado (2024–2026, 1.376 linhas): acurácia de 77,6% e AUC de 0,854.
+
+**Limitação importante:** como o treino classificatório dessas corridas ainda não aconteceu, o `grid` real foi substituído pela média de grid do piloto na temporada — ou seja, é uma projeção da tendência de desempenho, não uma previsão do resultado do fim de semana. O modelo também prevê "Top 10 sim/não", não a ordem de chegada: a lista acima está ordenada por probabilidade, não por posição prevista. O ideal é rodar o script de novo com o grid real assim que o qualifying de cada corrida acontecer.
+
+> As métricas de treino exibidas no dashboard (77,8% / 0,853, matriz de confusão, curvas) continuam sendo as da execução original do notebook, já que o modelo não foi retreinado.
 
 ## Possíveis melhorias futuras
 
@@ -120,7 +139,9 @@ Como aplicação prática, o modelo foi usado para estimar o Top 10 das 3 próxi
 - `F1_Classificacao_Top10.ipynb` — notebook completo do projeto (pipeline, modelo, avaliação e previsões), já executado com todas as saídas e gráficos embutidos
 - `dashboard_data.json` — métricas, curvas e previsões exportadas pelo notebook (fonte dos dois artefatos abaixo)
 - `dashboard.html` — painel visual interativo com os resultados (métricas, curvas de treino, matriz de confusão, ROC e previsões), abre em qualquer navegador sem precisar de servidor ou instalação
-- `predicoes_proximas_corridas_2026.csv` — probabilidades de Top10 previstas para as próximas 3 corridas
+- `predicoes_proximas_corridas_2026.csv` — probabilidades de Top10 previstas para as próximas corridas (hoje: Brasil, Las Vegas, Catar e Abu Dhabi)
+- `prever_proximas_corridas.py` — recalcula as previsões a partir do modelo salvo e atualiza o CSV, o `dashboard_data.json` e o `dashboard.html`
+- `dataframes/atualizar_dados.py` — busca na API jolpica-f1 as corridas que faltam e o calendário atualizado
 - `f1_top10_model.keras` — modelo treinado salvo (pode ser recarregado com `keras.models.load_model(...)` sem precisar retreinar)
 - `README_projeto.md` — este documento
 
@@ -138,7 +159,7 @@ Este projeto usa dados até uma corrida específica de 2026 (ver seção "Fonte 
 
 **2. Tarefa agendada (para quem usa Claude/Cowork).** Quem tiver acesso a um agente com tarefas agendadas pode configurar uma rotina recorrente (ex.: semanal, ou logo após cada corrida) que busca os resultados novos na API, atualiza os CSVs e roda a etapa de inferência para gerar previsões frescas das próximas corridas — tudo de forma automática, sem intervenção manual.
 
-**3. Rodar `build.py` localmente (opção mais independente).** A pasta `dataframes/` traz um `build.py` que reconstrói os datasets diretamente da API jolpica-f1 (`pip install pandas requests` e depois `python build.py`). Rodar esse script na sua própria máquina é o caminho mais robusto para manter os dados sempre em dia, já que não depende de nenhum serviço de terceiros além da própria API — e pode ser agendado para rodar sozinho (por exemplo, via Agendador de Tarefas do Windows) logo após o horário de cada corrida.
+**3. Rodar os scripts localmente (opção mais independente).** Dentro de `dataframes/`, rode `python atualizar_dados.py` (precisa de `pip install requests`): ele acrescenta só as corridas que ainda faltam e atualiza o calendário da temporada. Depois, na raiz do projeto, rode `python prever_proximas_corridas.py` para gerar as previsões novas. Rodar esse script na sua própria máquina é o caminho mais robusto para manter os dados sempre em dia, já que não depende de nenhum serviço de terceiros além da própria API — e pode ser agendado para rodar sozinho (por exemplo, via Agendador de Tarefas do Windows) logo após o horário de cada corrida.
 
 **Importante: o modelo treinado não precisa ser retreinado a cada atualização.** O `f1_top10_model.keras` já capturou os padrões gerais de grid, equipe, circuito e forma dos pilotos — o que precisa ser recalculado a cada corrida nova são apenas os *features* de forma da temporada (`driver_avg_pos_season`, `constructor_avg_points_season`), que são médias até a última corrida disputada. Com os dados atualizados, basta recarregar o modelo salvo (`keras.models.load_model('f1_top10_model.keras')`) e rodar a etapa de inferência novamente para obter previsões atualizadas das próximas corridas, sem precisar treinar do zero.
 

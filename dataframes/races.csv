@@ -1163,10 +1163,11 @@ season,round,race_name,date,time,circuit_id,circuit_name,locality,country,lat,lo
 2026,13,Italian Grand Prix,2026-09-06,13:00:00Z,monza,Autodromo Nazionale di Monza,Monza,Italy,45.6156,9.28111,https://en.wikipedia.org/wiki/2026_Italian_Grand_Prix
 2026,14,Spanish Grand Prix,2026-09-13,13:00:00Z,madring,Madring,Madrid,Spain,40.46528,-3.61528,https://en.wikipedia.org/wiki/2026_Spanish_Grand_Prix
 2026,15,Azerbaijan Grand Prix,2026-09-26,11:00:00Z,baku,Baku City Circuit,Baku,Azerbaijan,40.3725,49.8533,https://en.wikipedia.org/wiki/2026_Azerbaijan_Grand_Prix
-2026,16,Singapore Grand Prix,2026-10-11,12:00:00Z,marina_bay,Marina Bay Street Circuit,Marina Bay,Singapore,1.2914,103.864,https://en.wikipedia.org/wiki/2026_Singapore_Grand_Prix
-2026,17,United States Grand Prix,2026-10-25,20:00:00Z,americas,Circuit of the Americas,Austin,USA,30.1328,-97.6411,https://en.wikipedia.org/wiki/2026_United_States_Grand_Prix
-2026,18,Mexico City Grand Prix,2026-11-01,20:00:00Z,rodriguez,Autódromo Hermanos Rodríguez,Mexico City,Mexico,19.4042,-99.0907,https://en.wikipedia.org/wiki/2026_Mexico_City_Grand_Prix
-2026,19,Brazilian Grand Prix,2026-11-08,17:00:00Z,interlagos,Autódromo José Carlos Pace,São Paulo,Brazil,-23.7036,-46.6997,https://en.wikipedia.org/wiki/2026_Brazilian_Grand_Prix
-2026,20,Las Vegas Grand Prix,2026-11-22,04:00:00Z,vegas,Las Vegas Strip Street Circuit,Las Vegas,USA,36.1147,-115.173,https://en.wikipedia.org/wiki/2026_Las_Vegas_Grand_Prix
-2026,21,Qatar Grand Prix,2026-11-29,16:00:00Z,losail,Losail International Circuit,Lusail,Qatar,25.49,51.4542,https://en.wikipedia.org/wiki/2026_Qatar_Grand_Prix
-2026,22,Abu Dhabi Grand Prix,2026-12-06,13:00:00Z,yas_marina,Yas Marina Circuit,Abu Dhabi,UAE,24.4672,54.6031,https://en.wikipedia.org/wiki/2026_Abu_Dhabi_Grand_Prix
+2026,16,Bahrain Grand Prix in Malaysia,2026-10-04,07:00:00Z,sepang,Sepang International Circuit,Kuala Lumpur,Malaysia,2.76083,101.738,https://en.wikipedia.org/wiki/2026_Bahrain_Grand_Prix
+2026,17,Singapore Grand Prix,2026-10-11,12:00:00Z,marina_bay,Marina Bay Street Circuit,Marina Bay,Singapore,1.2914,103.864,https://en.wikipedia.org/wiki/2026_Singapore_Grand_Prix
+2026,18,United States Grand Prix,2026-10-25,20:00:00Z,americas,Circuit of the Americas,Austin,USA,30.1328,-97.6411,https://en.wikipedia.org/wiki/2026_United_States_Grand_Prix
+2026,19,Mexico City Grand Prix,2026-11-01,20:00:00Z,rodriguez,Autódromo Hermanos Rodríguez,Mexico City,Mexico,19.4042,-99.0907,https://en.wikipedia.org/wiki/2026_Mexico_City_Grand_Prix
+2026,20,Brazilian Grand Prix,2026-11-08,17:00:00Z,interlagos,Autódromo José Carlos Pace,São Paulo,Brazil,-23.7036,-46.6997,https://en.wikipedia.org/wiki/2026_Brazilian_Grand_Prix
+2026,21,Las Vegas Grand Prix,2026-11-22,04:00:00Z,vegas,Las Vegas Strip Street Circuit,Las Vegas,USA,36.1147,-115.173,https://en.wikipedia.org/wiki/2026_Las_Vegas_Grand_Prix
+2026,22,Qatar Grand Prix,2026-11-29,16:00:00Z,losail,Lusail International Circuit,Lusail,Qatar,25.49,51.4542,https://en.wikipedia.org/wiki/2026_Qatar_Grand_Prix
+2026,23,Abu Dhabi Grand Prix,2026-12-06,13:00:00Z,yas_marina,Yas Marina Circuit,Abu Dhabi,UAE,24.4672,54.6031,https://en.wikipedia.org/wiki/2026_Abu_Dhabi_Grand_Prix
