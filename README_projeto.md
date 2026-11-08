@@ -106,10 +106,12 @@ Como aplicação prática, o modelo salvo é usado para estimar a probabilidade 
 
 | Corrida | Top 10 previsto (em ordem de probabilidade) | Disputa pela 10ª vaga |
 |---|---|---|
-| GP do Brasil (rodada 20, 08/11) | Hamilton 80,5%, Leclerc 80,2%, Russell 79,6%, Verstappen 78,5%, Norris 77,8%, Antonelli 77,7%, Piastri 76,5%, Hadjar 71,2%, Gasly 59,6%, Hülkenberg 56,8% | Lawson 53,3%, Lindblad 52,5%, Colapinto 49,3% |
+| GP do Brasil (rodada 20, 08/11) — **grid real** | Norris 82,5%, Antonelli 80,7%, Hadjar 78,5%, Lawson 76,4%, Hülkenberg 76,2%, Russell 75,5%, Alonso 70,6%, Bearman 70,2%, Piastri 66,5%, Albon 64,5% | Câmara 59,6%, Sainz 51,7%, Lindblad 49,7%, Leclerc 48,3% |
 | GP de Las Vegas (rodada 21, 22/11) | Leclerc, Russell, Hamilton, Antonelli, Norris, Verstappen, Piastri, Hadjar, Gasly, Hülkenberg | Lindblad 54%, Lawson 53% |
 | GP do Catar (rodada 22, 29/11) | Leclerc, Russell, Hamilton, Norris, Piastri, Antonelli, Verstappen, Hadjar, Hülkenberg, Gasly | Lawson 40%, Lindblad 38% |
 | GP de Abu Dhabi (rodada 23, 06/12) | Leclerc, Russell, Hamilton, Norris, Piastri, Antonelli, Verstappen, Hadjar, Gasly, Hülkenberg | Lawson 45%, Lindblad 45% |
+
+**Atualização de 07/11/2026 — GP do Brasil com o grid real.** Depois do classificatório, a previsão do Brasil foi refeita com o grid oficial (dicionário `GRID_REAL` em `prever_proximas_corridas.py`). As punições por troca de motor viraram o quadro: Hamilton, Verstappen e Pérez largam do fundo e Leclerc perdeu 10 posições, então os quatro saíram do Top 10 previsto (Hamilton caiu de 80,5% para 24,2%, Verstappen de 78,5% para 17,8%). Entraram Lawson, Alonso, Bearman e Albon, que largam entre os 10 primeiros. Ressalva: o grid é a variável mais forte do modelo, e ele não tem nenhuma informação sobre o ritmo do carro além da média de pontos da equipe. Por isso tende a subestimar a recuperação de pilotos de equipes de ponta que largam atrás. Na prática, Hamilton e Verstappen têm mais chance de pontuar do que os 18–24% indicados.
 
 Probabilidades completas (todos os 22 pilotos, mais uma variante "forma recente" que usa o grid médio das últimas 5 corridas) em `predicoes_proximas_corridas_2026.csv`.
 

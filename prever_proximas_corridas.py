@@ -44,6 +44,19 @@ SUBSTITUICOES = {
     "ryo_hirakawa": ("rafael_camara", "Brazilian"),
 }
 
+# Grid de largada real, quando o classificatório já aconteceu: {rodada: {driver_id: posição}}.
+# Para essas rodadas o grid real substitui a média de grid (inclusive na variante "forma recente").
+# GP do Brasil 2026 (rodada 20): grid oficial após punições de motor (Russell -5, Leclerc -10;
+# Hamilton, Verstappen e Pérez para o fundo). Fontes: crash.net, pitpass.com, autohebdof1.com (07/11/2026).
+GRID_REAL = {
+    20: {
+        "norris": 1, "antonelli": 2, "lawson": 3, "hulkenberg": 4, "hadjar": 5, "bearman": 6,
+        "russell": 7, "alonso": 8, "albon": 9, "piastri": 10, "rafael_camara": 11,
+        "arvid_lindblad": 12, "sainz": 13, "leclerc": 14, "colapinto": 15, "gasly": 16,
+        "stroll": 17, "bottas": 18, "bortoleto": 19, "hamilton": 20, "max_verstappen": 21, "perez": 22,
+    },
+}
+
 NUMERIC = ["grid", "lat", "long", "season", "driver_avg_pos_season", "constructor_avg_points_season"]
 CATEGORICAL = ["constructor_id", "circuit_id", "driver_nationality"]
 
@@ -126,6 +139,14 @@ def main():
                 "driver_nationality": nat or driver_nat[drv],
             })
         X = pd.DataFrame(rows)
+        grid_real = GRID_REAL.get(int(race["round"]))
+        X["grid_real"] = bool(grid_real)
+        if grid_real:
+            faltando = set(X["driver_id"]) - set(grid_real)
+            if faltando:
+                raise ValueError(f"Grid real da rodada {race['round']} sem os pilotos: {sorted(faltando)}")
+            X["grid"] = X["driver_id"].map(grid_real).astype(float)
+            X["grid_recente"] = X["grid"]
         X["prob_top10"] = model.predict(pre.transform(X[NUMERIC + CATEGORICAL]), verbose=0).ravel()
         Xr = X.assign(grid=X["grid_recente"])
         X["prob_top10_forma_recente"] = model.predict(pre.transform(Xr[NUMERIC + CATEGORICAL]), verbose=0).ravel()

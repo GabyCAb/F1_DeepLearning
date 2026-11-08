@@ -223,54 +223,54 @@
       "date": "2026-11-08",
       "drivers": [
         {
-          "driver": "Hamilton",
-          "constructor": "Ferrari",
-          "prob": 0.8054
-        },
-        {
-          "driver": "Leclerc",
-          "constructor": "Ferrari",
-          "prob": 0.8021
-        },
-        {
-          "driver": "Russell",
-          "constructor": "Mercedes",
-          "prob": 0.7963
-        },
-        {
-          "driver": "Max Verstappen",
-          "constructor": "Red Bull",
-          "prob": 0.7845
-        },
-        {
           "driver": "Norris",
           "constructor": "McLaren",
-          "prob": 0.7777
+          "prob": 0.825
         },
         {
           "driver": "Antonelli",
           "constructor": "Mercedes",
-          "prob": 0.7769
-        },
-        {
-          "driver": "Piastri",
-          "constructor": "McLaren",
-          "prob": 0.7645
+          "prob": 0.8067
         },
         {
           "driver": "Hadjar",
           "constructor": "Red Bull",
-          "prob": 0.7121
+          "prob": 0.7852
         },
         {
-          "driver": "Gasly",
-          "constructor": "Alpine",
-          "prob": 0.5955
+          "driver": "Lawson",
+          "constructor": "Racing Bulls",
+          "prob": 0.7639
         },
         {
           "driver": "Hülkenberg",
           "constructor": "Audi",
-          "prob": 0.5683
+          "prob": 0.7617
+        },
+        {
+          "driver": "Russell",
+          "constructor": "Mercedes",
+          "prob": 0.7552
+        },
+        {
+          "driver": "Alonso",
+          "constructor": "Aston Martin",
+          "prob": 0.7064
+        },
+        {
+          "driver": "Bearman",
+          "constructor": "Haas",
+          "prob": 0.7021
+        },
+        {
+          "driver": "Piastri",
+          "constructor": "McLaren",
+          "prob": 0.665
+        },
+        {
+          "driver": "Albon",
+          "constructor": "Williams",
+          "prob": 0.6451
         }
       ]
     },
