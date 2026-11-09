@@ -11,8 +11,8 @@ Essa é uma classificação binária: `1` = terminou no Top 10, `0` = não termi
 ## Fonte dos dados
 
 - **API:** [jolpica-f1](https://github.com/jolpica/jolpica-f1) — sucessor open-source e comunitário da antiga Ergast Developer API, disponível em `api.jolpi.ca`.
-- **Arquivos usados:** `results.csv` (26.137 linhas — um piloto por corrida, 1950 a 2026) e `races.csv` (calendário e circuitos: localização, latitude/longitude).
-- **Atualização:** os dados foram complementados via a API para cobrir até o **GP da Cidade do México (01/11/2026, rodada 19)**, já que o dataset original (Kaggle, `fleongg/formula-1-results-and-standings-1950-present`) estava parado no GP de Mônaco (07/06/2026). A última atualização (04/11/2026) também corrigiu o calendário de 2026, que passou a ter 23 etapas com a inclusão do "Bahrain Grand Prix in Malaysia" (Sepang, rodada 16) — com isso o GP do Brasil virou a rodada 20.
+- **Arquivos usados:** `results.csv` (26.313 linhas — um piloto por corrida, 1950 a 2026) e `races.csv` (calendário e circuitos: localização, latitude/longitude).
+- **Atualização:** os dados foram complementados via a API para cobrir até o **GP do Brasil (08/11/2026, rodada 20)**, já que o dataset original (Kaggle, `fleongg/formula-1-results-and-standings-1950-present`) estava parado no GP de Mônaco (07/06/2026). A última atualização (04/11/2026) também corrigiu o calendário de 2026, que passou a ter 23 etapas com a inclusão do "Bahrain Grand Prix in Malaysia" (Sepang, rodada 16) — com isso o GP do Brasil virou a rodada 20.
 - **Licença:** CC BY-NC-SA 4.0 (uso não comercial, com atribuição) — projeto de fins educacionais.
 
 ## Por que "Top 10" e não "pontuação"
@@ -34,6 +34,8 @@ Um cuidado central do projeto foi usar apenas informações disponíveis **antes
 | `circuit_id` | categórica | Circuito |
 | `driver_nationality` | categórica | Nacionalidade do piloto |
 
+> **Correção de 09/11/2026 — bug no cálculo das médias da temporada.** A primeira versão do notebook calculava `driver_avg_pos_season` e `constructor_avg_points_season` com `groupby(...).apply(...).reset_index(drop=True)`. Esse padrão devolve os valores na ordem dos *grupos* (piloto a piloto), não na ordem das linhas do DataFrame. Resultado: em ~99% das linhas a média atribuída era de outro piloto ou equipe — a correlação da feature com a posição real caía de 0,41 para 0,04, ou seja, virava ruído. O modelo era treinado praticamente sem informação de forma e passava a depender quase só do grid. Isso aparecia como uma "limitação": pilotos de equipes de ponta largando atrás por punição recebiam probabilidades muito baixas (no GP do Brasil 2026, Verstappen largou em 21º com 27% e terminou em 2º). A correção foi trocar por `groupby(...).transform(...)`, que mantém o alinhamento, e retreinar o modelo. Foram testadas também features extras (grid médio do piloto e do carro, diferença entre o grid e o grid habitual, largada do pit lane), mas elas não melhoraram o resultado além da correção do bug e não foram adotadas.
+
 Colunas como `points`, `status`, `laps` e `time_millis` foram **excluídas** por só existirem depois da corrida acontecer — usá-las seria data leakage (o modelo "colaria" a resposta em vez de aprender a prever).
 
 ## Divisão treino/teste
@@ -41,7 +43,7 @@ Colunas como `points`, `status`, `laps` e `time_millis` foram **excluídas** por
 Em vez de um split aleatório, foi usado um **split temporal**:
 
 - **Treino:** temporadas 1950–2023 (24.915 linhas)
-- **Teste:** temporadas 2024–2026 (1.222 linhas, nunca vistas durante o treino)
+- **Teste:** temporadas 2024–2026 (1.398 linhas, nunca vistas durante o treino)
 
 Essa escolha simula o cenário real de uso do modelo — prever corridas futuras a partir do histórico — e evita qualquer contaminação temporal entre treino e teste.
 
@@ -79,51 +81,56 @@ Input (325 features após one-hot)
 
 ## Resultados obtidos
 
-Avaliação no conjunto de teste (temporadas 2024–2026, nunca vistas pelo modelo):
+Avaliação no conjunto de teste (temporadas 2024–2026 até o GP do Brasil, nunca vistas pelo modelo), comparando o modelo atual (com a correção das features) com a versão anterior:
 
-| Métrica | Valor |
-|---|---|
-| Acurácia | 77,8% |
-| F1-score | 0,783 |
-| AUC-ROC | 0,853 |
+| Métrica | Versão anterior (com o bug) | **Versão atual** |
+|---|---|---|
+| Acurácia | 77,5% | **79,0%** |
+| F1-score | 0,778 | **0,785** |
+| AUC-ROC | 0,853 | **0,863** |
 
-Matriz de confusão (1.222 corridas-piloto no teste):
+Matriz de confusão da versão atual (1.398 corridas-piloto no teste):
 
 |  | Previsto: Fora do Top10 | Previsto: Top10 |
 |---|---|---|
-| **Real: Fora do Top10** | 462 | 160 |
-| **Real: Top10** | 111 | 489 |
+| **Real: Fora do Top10** | 568 | 150 |
+| **Real: Top10** | 144 | 536 |
 
-O grid de largada é, isoladamente, um forte preditor (quem larga na frente tende a terminar na frente), mas a rede também aprende padrões relevantes de equipe, circuito e forma recente do piloto/equipe na temporada — o ganho de desempenho em relação a um modelo trivial confirma que essas features agregam informação real.
+O ganho fica mais claro nas corridas recentes e nos casos difíceis:
 
-> **Nota sobre reprodutibilidade:** por não-determinismo de ponto flutuante do TensorFlow em CPU (paralelismo de threads, oneDNN), rodar o notebook do zero novamente pode produzir números ligeiramente diferentes destes (variação tipicamente de ±1 ponto percentual). Os valores acima são os da execução salva no notebook, e são a mesma execução que gerou `dashboard_data.json`, `dashboard.html` e `predicoes_proximas_corridas_2026.csv` — os três artefatos são consistentes entre si porque vêm de uma única execução, exportada ao final do notebook (seção 10), em vez de retreinos separados.
+| Recorte | Versão anterior | **Versão atual** |
+|---|---|---|
+| Rodadas 13–20 de 2026, com o grid real (176 corridas-piloto) | acurácia 76,1%, AUC 0,836 | **acurácia 84,1%, AUC 0,906** |
+| Pilotos do Top 10 acertados nessas 8 corridas | 61 de 80 | **67 de 80** |
+| GP do Brasil 2026 (grid real, 5 punições de motor) | 7 de 10 | **10 de 10** |
+| Pilotos que largaram ≥5 posições atrás do habitual | acurácia ~51% | **acurácia ~63%** |
+
+O grid de largada continua sendo o preditor mais forte (quem larga na frente tende a terminar na frente), mas com as médias da temporada calculadas corretamente a rede passa a combinar o grid com a forma real do piloto e da equipe. Repetindo o treino com 5 sementes aleatórias diferentes, a acurácia da versão corrigida ficou em 79,0% ± 0,4 p.p. e o AUC em 0,863 ± 0,002, então o ganho não depende da semente.
+
+> **Nota sobre reprodutibilidade:** por não-determinismo de ponto flutuante do TensorFlow em CPU (paralelismo de threads, oneDNN), rodar o notebook do zero novamente pode produzir números ligeiramente diferentes destes (variação tipicamente de ±1 ponto percentual). Os valores acima são os da execução salva no notebook (09/11/2026), e são a mesma execução que gerou `f1_top10_model.keras`, `dashboard_data.json`, `dashboard.html` e `predicoes_proximas_corridas_2026.csv`.
 
 ### Previsão para corridas futuras (demonstração de uso)
 
-Como aplicação prática, o modelo salvo é usado para estimar a probabilidade de Top 10 nas próximas corridas de 2026, com a forma da temporada até a última corrida disputada. A previsão é feita pelo script `prever_proximas_corridas.py`, que reproduz exatamente o pré-processamento do notebook (as probabilidades antigas foram reproduzidas com diferença < 1e-7) e carrega `f1_top10_model.keras` sem retreinar.
+Como aplicação prática, o modelo é usado para estimar a probabilidade de Top 10 nas próximas corridas de 2026, com a forma da temporada até a última corrida disputada. A previsão é feita por `prever_proximas_corridas.py`, que o notebook chama na seção 9 e que também pode ser rodado sozinho depois de cada corrida, sem retreinar o modelo.
 
-**Atualização de 04/11/2026 — forma até o GP do México (rodada 19):**
+**Previsão atual — forma até o GP do Brasil (rodada 20), modelo corrigido:**
 
-| Corrida | Top 10 previsto (em ordem de probabilidade) | Disputa pela 10ª vaga |
+| Corrida | Top 10 previsto (em ordem de probabilidade) | Logo atrás |
 |---|---|---|
-| GP do Brasil (rodada 20, 08/11) — **grid real** | Norris 82,5%, Antonelli 80,7%, Hadjar 78,5%, Lawson 76,4%, Hülkenberg 76,2%, Russell 75,5%, Alonso 70,6%, Bearman 70,2%, Piastri 66,5%, Albon 64,5% | Câmara 59,6%, Sainz 51,7%, Lindblad 49,7%, Leclerc 48,3% |
-| GP de Las Vegas (rodada 21, 22/11) | Leclerc, Russell, Hamilton, Antonelli, Norris, Verstappen, Piastri, Hadjar, Gasly, Hülkenberg | Lindblad 54%, Lawson 53% |
-| GP do Catar (rodada 22, 29/11) | Leclerc, Russell, Hamilton, Norris, Piastri, Antonelli, Verstappen, Hadjar, Hülkenberg, Gasly | Lawson 40%, Lindblad 38% |
-| GP de Abu Dhabi (rodada 23, 06/12) | Leclerc, Russell, Hamilton, Norris, Piastri, Antonelli, Verstappen, Hadjar, Gasly, Hülkenberg | Lawson 45%, Lindblad 45% |
+| GP de Las Vegas (rodada 21, 22/11) | Antonelli 90,0%, Russell 89,2%, Hamilton 87,7%, Leclerc 87,3%, Norris 81,8%, Verstappen 81,4%, Hadjar 80,9%, Piastri 79,7%, Lawson 59,2%, Lindblad 53,2% | Gasly 45,0%, Colapinto 38,3%, Hülkenberg 36,7% |
+| GP do Catar (rodada 22, 29/11) | Antonelli 89,4%, Russell 88,6%, Hamilton 87,2%, Leclerc 86,3%, Norris 80,9%, Verstappen 80,0%, Hadjar 79,9%, Piastri 78,5%, Lawson 61,0%, Lindblad 55,2% | Gasly 48,9%, Colapinto 38,4%, Hülkenberg 37,5% |
+| GP de Abu Dhabi (rodada 23, 06/12) | Antonelli 90,7%, Russell 90,2%, Hamilton 88,8%, Leclerc 88,2%, Verstappen 83,1%, Norris 82,9%, Hadjar 82,4%, Piastri 81,4%, Lawson 61,0%, Lindblad 54,8% | Gasly 48,6%, Colapinto 39,5%, Hülkenberg 34,1% |
 
-**Atualização de 07/11/2026 — GP do Brasil com o grid real.** Depois do classificatório, a previsão do Brasil foi refeita com o grid oficial (dicionário `GRID_REAL` em `prever_proximas_corridas.py`). As punições por troca de motor viraram o quadro: Hamilton, Verstappen e Pérez largam do fundo e Leclerc perdeu 10 posições, então os quatro saíram do Top 10 previsto (Hamilton caiu de 80,5% para 24,2%, Verstappen de 78,5% para 17,8%). Entraram Lawson, Alonso, Bearman e Albon, que largam entre os 10 primeiros. Ressalva: o grid é a variável mais forte do modelo, e ele não tem nenhuma informação sobre o ritmo do carro além da média de pontos da equipe. Por isso tende a subestimar a recuperação de pilotos de equipes de ponta que largam atrás. Na prática, Hamilton e Verstappen têm mais chance de pontuar do que os 18–24% indicados.
+As quatro equipes de ponta (Mercedes, Ferrari, McLaren e Red Bull) ocupam as 8 primeiras vagas com folga (78%–91%). As duas últimas ficam com a Racing Bulls (Lawson e Lindblad, 53%–61%), com Gasly logo atrás, perto de 50%. Probabilidades completas (os 22 pilotos, mais uma variante "forma recente" que usa o grid médio das últimas 5 corridas) em `predicoes_proximas_corridas_2026.csv`.
 
-Probabilidades completas (todos os 22 pilotos, mais uma variante "forma recente" que usa o grid médio das últimas 5 corridas) em `predicoes_proximas_corridas_2026.csv`.
+**Escalações consideradas:** Hadjar na Red Bull e Lawson na Racing Bulls (desde a rodada 15); Tsunoda fora do grid. Na Haas, Esteban Ocon foi afastado pelo resto de 2026 e o brasileiro **Rafael Câmara** estreou no GP do Brasil (mantido nas demais etapas por hipótese — ajuste `SUBSTITUICOES` no script se mudar). Pilotos com menos de 3 corridas na temporada, como Câmara, recebem as médias de grid e de posição do carro (`MIN_CORRIDAS`), para que uma corrida isolada não distorça a previsão.
 
-As quatro equipes de ponta (Mercedes, Ferrari, McLaren, Red Bull) ocupam as 8 primeiras vagas com folga (65%–82%); as duas últimas são uma disputa aberta entre Alpine, Audi e Racing Bulls, quase sempre na faixa de 45%–60%, ou seja, praticamente cara ou coroa.
+**Grid real quando disponível:** depois do classificatório, a posição oficial de largada de cada piloto pode ser informada em `GRID_REAL` no script (foi assim no GP do Brasil). Sem ela, o `grid` é substituído pela média de grid do piloto na temporada — uma projeção da tendência de desempenho, não do resultado do fim de semana. O modelo prevê "Top 10 sim/não", não a ordem de chegada: as listas acima estão ordenadas por probabilidade, não por posição prevista.
 
-**Mudanças de escalação consideradas:** Hadjar no lugar de Lawson na Red Bull e Lawson na Racing Bulls (desde a rodada 15); Tsunoda fora do grid. Na Haas, Esteban Ocon foi afastado pelo resto de 2026 e o brasileiro **Rafael Câmara** estreia no GP do Brasil (a Haas só confirmou Câmara para o Brasil até 03/11; ele foi mantido nas demais etapas por hipótese — ajuste `SUBSTITUICOES` no script se mudar). Como estreante, Câmara não tem histórico na temporada, então recebe a média de grid e de posição do carro da Haas em 2026.
-
-**Como as previsões anteriores se saíram:** a projeção feita com dados até a Holanda acertou 7 de 10 pilotos no Top 10 da Itália, 9 de 10 na Espanha e 6 de 10 no Azerbaijão. Avaliado com o grid real nas 7 corridas novas (rodadas 13–19, 154 corridas-piloto), o modelo teve acurácia de 79,2% e AUC de 0,849 — em linha com o teste original. No conjunto de teste completo atualizado (2024–2026, 1.376 linhas): acurácia de 77,6% e AUC de 0,854.
-
-**Limitação importante:** como o treino classificatório dessas corridas ainda não aconteceu, o `grid` real foi substituído pela média de grid do piloto na temporada — ou seja, é uma projeção da tendência de desempenho, não uma previsão do resultado do fim de semana. O modelo também prevê "Top 10 sim/não", não a ordem de chegada: a lista acima está ordenada por probabilidade, não por posição prevista. O ideal é rodar o script de novo com o grid real assim que o qualifying de cada corrida acontecer.
-
-> As métricas de treino exibidas no dashboard (77,8% / 0,853, matriz de confusão, curvas) continuam sendo as da execução original do notebook, já que o modelo não foi retreinado.
+**Histórico das previsões de 2026:**
+- **04/11 (forma até o México, modelo anterior):** a projeção feita com dados até a Holanda tinha acertado 7 de 10 pilotos do Top 10 na Itália, 9 na Espanha e 6 no Azerbaijão.
+- **07/11 (GP do Brasil com o grid real, modelo anterior):** as punições de motor (Hamilton, Verstappen e Pérez no fundo; Leclerc −10; Russell −5) derrubaram Hamilton para 24% e Verstappen para 18%. A previsão acertou 7 de 10. Verstappen terminou em 2º, Hamilton em 9º e Leclerc em 8º.
+- **09/11 (modelo corrigido):** com o mesmo grid, o modelo corrigido dá 76% para Hamilton, 64% para Verstappen e 79% para Leclerc, e acerta os 10 pilotos do Top 10 do Brasil.
 
 ## Possíveis melhorias futuras
 

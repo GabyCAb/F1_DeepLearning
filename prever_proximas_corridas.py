@@ -2,7 +2,8 @@
 Previsão de Top 10 para as próximas corridas da temporada, usando o modelo salvo
 (f1_top10_model.keras) — sem retreinar.
 
-Reproduz exatamente o pipeline do notebook F1_Classificacao_Top10.ipynb:
+Reproduz exatamente o pipeline do notebook F1_Classificacao_Top10.ipynb (que chama este
+script na seção 9):
   - mesmas features e mesmo pré-processamento (StandardScaler + OneHotEncoder,
     ajustados nas temporadas 1950–2023);
   - "forma" do piloto/equipe = médias da temporada até a última corrida disputada;
@@ -34,6 +35,7 @@ DATA_DIR = "dataframes"
 SEASON = 2026
 N_PROXIMAS = 4          # quantas corridas futuras prever
 JANELA_RECENTE = 5      # rodadas usadas para escalação e "forma recente"
+MIN_CORRIDAS = 3        # abaixo disso, o piloto recebe as médias do carro (estreantes/substitutos)
 
 # Trocas de piloto já confirmadas para as próximas corridas:
 # piloto_que_sai -> (piloto_que_entra, nacionalidade).
@@ -68,10 +70,13 @@ def carregar():
                        on=["season", "round"], how="left")
     df["target_top10"] = (df["position"] <= 10).astype(int)
     df = df.sort_values(["season", "round"]).reset_index(drop=True)
+    # transform devolve os valores alinhados às linhas originais. (A versão anterior usava
+    # groupby().apply(...).reset_index(drop=True), que devolve na ordem dos grupos e trocava
+    # as médias entre pilotos — corrigido em 09/11/2026, junto com o retreino do modelo.)
     df["driver_avg_pos_season"] = (df.groupby(["season", "driver_id"])["position"]
-                                   .apply(lambda s: s.shift().expanding().mean()).reset_index(drop=True))
+                                   .transform(lambda s: s.shift().expanding().mean()))
     df["constructor_avg_points_season"] = (df.groupby(["season", "constructor_id"])["points"]
-                                           .apply(lambda s: s.shift().expanding().mean()).reset_index(drop=True))
+                                           .transform(lambda s: s.shift().expanding().mean()))
     df["driver_avg_pos_season"] = df["driver_avg_pos_season"].fillna(df["position"].median())
     df["constructor_avg_points_season"] = df["constructor_avg_points_season"].fillna(df["points"].median())
     return results, races, df
@@ -102,6 +107,7 @@ def main():
     # ---------- estado atual da temporada ----------
     recent = s[s["round"] > last_round - JANELA_RECENTE]
     driver_avg_pos = s.groupby("driver_id")["position"].mean()
+    driver_starts = s.groupby("driver_id").size()
     driver_avg_grid = s.groupby("driver_id")["grid"].mean()
     driver_recent_grid = recent.groupby("driver_id")["grid"].mean()
     constructor_avg_pts = s.groupby("constructor_id")["points"].mean()
@@ -126,7 +132,8 @@ def main():
     for _, race in upcoming.iterrows():
         rows = []
         for drv, cid, nat in lineup:
-            estreante = drv not in driver_avg_pos.index
+            # menos de MIN_CORRIDAS na temporada: amostra pequena demais, usa a média do carro
+            estreante = driver_starts.get(drv, 0) < MIN_CORRIDAS
             rows.append({
                 "driver_id": drv,
                 # estreante sem histórico na temporada: usa a média do carro (grid e posição)
