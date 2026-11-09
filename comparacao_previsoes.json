@@ -1,0 +1,4276 @@
+{
+  "season": 2026,
+  "races": [
+    {
+      "round": 1,
+      "race_name": "Australian Grand Prix",
+      "date": "2026-03-08",
+      "scenarios": {
+        "real": {
+          "hits": 5,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9396,
+              "grid": 2,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8695,
+              "grid": 7,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7992,
+              "grid": 5,
+              "result": "Não largou",
+              "top10": false
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7707,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6746,
+              "grid": 8,
+              "result": "P13",
+              "top10": false
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.6604,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.628,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.6232,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "prob": 0.6154,
+              "grid": 13,
+              "result": "P11",
+              "top10": false
+            },
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "prob": 0.5562,
+              "grid": 11,
+              "result": "Não largou",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P8",
+              "pred_rank": 11,
+              "prob": 0.4817,
+              "grid": 9
+            },
+            {
+              "driver": "Bortoleto",
+              "team": "Audi",
+              "result": "P9",
+              "pred_rank": 12,
+              "prob": 0.4298,
+              "grid": 10
+            },
+            {
+              "driver": "Bearman",
+              "team": "Haas",
+              "result": "P7",
+              "pred_rank": 13,
+              "prob": 0.3812,
+              "grid": 12
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P10",
+              "pred_rank": 14,
+              "prob": 0.3523,
+              "grid": 14
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "result": "P6",
+              "pred_rank": 20,
+              "prob": 0.1731,
+              "grid": 20
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 2,
+      "race_name": "Chinese Grand Prix",
+      "date": "2026-03-15",
+      "scenarios": {
+        "real": {
+          "hits": 6,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9633,
+              "grid": 2,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.955,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.9159,
+              "grid": 3,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.9155,
+              "grid": 4,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7441,
+              "grid": 6,
+              "result": "Não largou",
+              "top10": false
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7049,
+              "grid": 8,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Bearman",
+              "team": "Haas",
+              "prob": 0.6759,
+              "grid": 10,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.6427,
+              "grid": 5,
+              "result": "Não largou",
+              "top10": false
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "prob": 0.5878,
+              "grid": 13,
+              "result": "P14",
+              "top10": false
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5657,
+              "grid": 7,
+              "result": "P6",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "result": "P8",
+              "pred_rank": 12,
+              "prob": 0.491,
+              "grid": 9
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P10",
+              "pred_rank": 13,
+              "prob": 0.4585,
+              "grid": 12
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "result": "P7",
+              "pred_rank": 14,
+              "prob": 0.3307,
+              "grid": 14
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P9",
+              "pred_rank": 17,
+              "prob": 0.1236,
+              "grid": 17
+            }
+          ]
+        },
+        "pre": {
+          "hits": 6,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9637,
+              "grid": 2,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9551,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.912,
+              "grid": 4,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.9097,
+              "grid": 3,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7059,
+              "grid": 5,
+              "result": "Não largou",
+              "top10": false
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.6715,
+              "grid": 6,
+              "result": "Não largou",
+              "top10": false
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "prob": 0.6701,
+              "grid": 13,
+              "result": "P14",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6476,
+              "grid": 15,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6082,
+              "grid": 14,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.5796,
+              "grid": 12,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "result": "P8",
+              "pred_rank": 11,
+              "prob": 0.5792,
+              "grid": 9
+            },
+            {
+              "driver": "Bearman",
+              "team": "Haas",
+              "result": "P5",
+              "pred_rank": 13,
+              "prob": 0.5771,
+              "grid": 10
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P6",
+              "pred_rank": 16,
+              "prob": 0.2663,
+              "grid": 7
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P9",
+              "pred_rank": 18,
+              "prob": 0.1249,
+              "grid": 17
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 3,
+      "race_name": "Japanese Grand Prix",
+      "date": "2026-03-29",
+      "scenarios": {
+        "real": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9601,
+              "grid": 2,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9554,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.9072,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.9069,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7351,
+              "grid": 5,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.6575,
+              "grid": 7,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.6314,
+              "grid": 8,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.6262,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6231,
+              "grid": 10,
+              "result": "P14",
+              "top10": false
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "prob": 0.5709,
+              "grid": 12,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "result": "P8",
+              "pred_rank": 11,
+              "prob": 0.5681,
+              "grid": 11
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "result": "P9",
+              "pred_rank": 13,
+              "prob": 0.527,
+              "grid": 14
+            }
+          ]
+        },
+        "pre": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9611,
+              "grid": 2,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9546,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.9129,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.9053,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7286,
+              "grid": 5,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.6651,
+              "grid": 15,
+              "result": "P16",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.6445,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.6333,
+              "grid": 8,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Bearman",
+              "team": "Haas",
+              "prob": 0.6317,
+              "grid": 18,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "prob": 0.6306,
+              "grid": 12,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "result": "P9",
+              "pred_rank": 11,
+              "prob": 0.6145,
+              "grid": 14
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P7",
+              "pred_rank": 13,
+              "prob": 0.5603,
+              "grid": 7
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "result": "P8",
+              "pred_rank": 14,
+              "prob": 0.5568,
+              "grid": 11
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 4,
+      "race_name": "Miami Grand Prix",
+      "date": "2026-05-03",
+      "scenarios": {
+        "real": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9429,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9396,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8837,
+              "grid": 3,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8746,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7374,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7017,
+              "grid": 7,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.6224,
+              "grid": 2,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5642,
+              "grid": 9,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.4798,
+              "grid": 8,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.4634,
+              "grid": 11,
+              "result": "Abandono",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P9",
+              "pred_rank": 15,
+              "prob": 0.2664,
+              "grid": 13
+            },
+            {
+              "driver": "Albon",
+              "team": "Williams",
+              "result": "P10",
+              "pred_rank": 17,
+              "prob": 0.1775,
+              "grid": 15
+            }
+          ]
+        },
+        "pre": {
+          "hits": 6,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9455,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9423,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8805,
+              "grid": 3,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8767,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7264,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7252,
+              "grid": 7,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.5993,
+              "grid": 22,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5576,
+              "grid": 9,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.439,
+              "grid": 16,
+              "result": "P14",
+              "top10": false
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.43,
+              "grid": 11,
+              "result": "Abandono",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "result": "P5",
+              "pred_rank": 11,
+              "prob": 0.4191,
+              "grid": 2
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P7",
+              "pred_rank": 14,
+              "prob": 0.3149,
+              "grid": 8
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P9",
+              "pred_rank": 17,
+              "prob": 0.1759,
+              "grid": 13
+            },
+            {
+              "driver": "Albon",
+              "team": "Williams",
+              "result": "P10",
+              "pred_rank": 19,
+              "prob": 0.1366,
+              "grid": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 5,
+      "race_name": "Canadian Grand Prix",
+      "date": "2026-05-24",
+      "scenarios": {
+        "real": {
+          "hits": 6,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9479,
+              "grid": 1,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9421,
+              "grid": 2,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8657,
+              "grid": 8,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8657,
+              "grid": 5,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7956,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7796,
+              "grid": 4,
+              "result": "P11",
+              "top10": false
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.6501,
+              "grid": 6,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.6212,
+              "grid": 7,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.5495,
+              "grid": 10,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5304,
+              "grid": 9,
+              "result": "Não largou",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P8",
+              "pred_rank": 11,
+              "prob": 0.4626,
+              "grid": 14
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "result": "P7",
+              "pred_rank": 12,
+              "prob": 0.4242,
+              "grid": 12
+            },
+            {
+              "driver": "Bearman",
+              "team": "Haas",
+              "result": "P10",
+              "pred_rank": 13,
+              "prob": 0.3593,
+              "grid": 16
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P9",
+              "pred_rank": 17,
+              "prob": 0.2739,
+              "grid": 15
+            }
+          ]
+        },
+        "pre": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9455,
+              "grid": 1,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9437,
+              "grid": 2,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8836,
+              "grid": 8,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.864,
+              "grid": 5,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7844,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7729,
+              "grid": 4,
+              "result": "P11",
+              "top10": false
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.5972,
+              "grid": 6,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5731,
+              "grid": 14,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.5576,
+              "grid": 7,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.46,
+              "grid": 10,
+              "result": "P6",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Bearman",
+              "team": "Haas",
+              "result": "P10",
+              "pred_rank": 11,
+              "prob": 0.4452,
+              "grid": 16
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "result": "P7",
+              "pred_rank": 12,
+              "prob": 0.4304,
+              "grid": 12
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P9",
+              "pred_rank": 17,
+              "prob": 0.2371,
+              "grid": 15
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 6,
+      "race_name": "Monaco Grand Prix",
+      "date": "2026-06-07",
+      "scenarios": {
+        "real": {
+          "hits": 6,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9426,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9262,
+              "grid": 6,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8983,
+              "grid": 4,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8958,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7685,
+              "grid": 8,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.759,
+              "grid": 2,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7473,
+              "grid": 7,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.6949,
+              "grid": 5,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.6334,
+              "grid": 9,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.5678,
+              "grid": 10,
+              "result": "P5",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P6",
+              "pred_rank": 13,
+              "prob": 0.3636,
+              "grid": 15
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "result": "P9",
+              "pred_rank": 15,
+              "prob": 0.295,
+              "grid": 17
+            },
+            {
+              "driver": "Albon",
+              "team": "Williams",
+              "result": "P8",
+              "pred_rank": 17,
+              "prob": 0.266,
+              "grid": 11
+            },
+            {
+              "driver": "Alonso",
+              "team": "Aston Martin",
+              "result": "P10",
+              "pred_rank": 22,
+              "prob": 0.1109,
+              "grid": 21
+            }
+          ]
+        },
+        "pre": {
+          "hits": 5,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9417,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.935,
+              "grid": 6,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8964,
+              "grid": 4,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8892,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7843,
+              "grid": 8,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7636,
+              "grid": 7,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7191,
+              "grid": 2,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.6593,
+              "grid": 5,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.6124,
+              "grid": 9,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.6117,
+              "grid": 14,
+              "result": "P14",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "result": "P5",
+              "pred_rank": 11,
+              "prob": 0.5124,
+              "grid": 10
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P6",
+              "pred_rank": 13,
+              "prob": 0.4802,
+              "grid": 15
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "result": "P9",
+              "pred_rank": 14,
+              "prob": 0.3652,
+              "grid": 17
+            },
+            {
+              "driver": "Albon",
+              "team": "Williams",
+              "result": "P8",
+              "pred_rank": 18,
+              "prob": 0.1582,
+              "grid": 11
+            },
+            {
+              "driver": "Alonso",
+              "team": "Aston Martin",
+              "result": "P10",
+              "pred_rank": 20,
+              "prob": 0.1343,
+              "grid": 21
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 7,
+      "race_name": "Barcelona Grand Prix",
+      "date": "2026-06-14",
+      "scenarios": {
+        "real": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9358,
+              "grid": 3,
+              "result": "P16",
+              "top10": false
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.928,
+              "grid": 1,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.9003,
+              "grid": 2,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.868,
+              "grid": 10,
+              "result": "P15",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.778,
+              "grid": 7,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7773,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7405,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7253,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6807,
+              "grid": 8,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.5545,
+              "grid": 13,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P9",
+              "pred_rank": 11,
+              "prob": 0.5531,
+              "grid": 11
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P7",
+              "pred_rank": 12,
+              "prob": 0.5121,
+              "grid": 14
+            }
+          ]
+        },
+        "pre": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9395,
+              "grid": 3,
+              "result": "P16",
+              "top10": false
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9236,
+              "grid": 1,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8926,
+              "grid": 10,
+              "result": "P15",
+              "top10": false
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8919,
+              "grid": 2,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7915,
+              "grid": 7,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7696,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7116,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7019,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.6099,
+              "grid": 14,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6031,
+              "grid": 8,
+              "result": "P8",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P10",
+              "pred_rank": 11,
+              "prob": 0.569,
+              "grid": 13
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P9",
+              "pred_rank": 12,
+              "prob": 0.4957,
+              "grid": 11
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 8,
+      "race_name": "Austrian Grand Prix",
+      "date": "2026-06-28",
+      "scenarios": {
+        "real": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9248,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9237,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.9019,
+              "grid": 3,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8863,
+              "grid": 2,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7953,
+              "grid": 6,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7896,
+              "grid": 7,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7588,
+              "grid": 8,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7465,
+              "grid": 5,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6666,
+              "grid": 9,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.6113,
+              "grid": 11,
+              "result": "P13",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P10",
+              "pred_rank": 11,
+              "prob": 0.6041,
+              "grid": 10
+            }
+          ]
+        },
+        "pre": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9302,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9199,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8977,
+              "grid": 3,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8749,
+              "grid": 2,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8,
+              "grid": 6,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7986,
+              "grid": 7,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7541,
+              "grid": 8,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.728,
+              "grid": 5,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6307,
+              "grid": 9,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.619,
+              "grid": 11,
+              "result": "P13",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P10",
+              "pred_rank": 12,
+              "prob": 0.5392,
+              "grid": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 9,
+      "race_name": "British Grand Prix",
+      "date": "2026-07-05",
+      "scenarios": {
+        "real": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9314,
+              "grid": 1,
+              "result": "P15",
+              "top10": false
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9233,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.9046,
+              "grid": 3,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8847,
+              "grid": 2,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8014,
+              "grid": 6,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7938,
+              "grid": 8,
+              "result": "P11",
+              "top10": false
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.784,
+              "grid": 5,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7589,
+              "grid": 7,
+              "result": "P20",
+              "top10": false
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6108,
+              "grid": 10,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5929,
+              "grid": 9,
+              "result": "P7",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P10",
+              "pred_rank": 11,
+              "prob": 0.4364,
+              "grid": 15
+            },
+            {
+              "driver": "Bortoleto",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 13,
+              "prob": 0.2744,
+              "grid": 11
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P9",
+              "pred_rank": 14,
+              "prob": 0.2491,
+              "grid": 19
+            }
+          ]
+        },
+        "pre": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9296,
+              "grid": 1,
+              "result": "P15",
+              "top10": false
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9271,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.901,
+              "grid": 3,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8759,
+              "grid": 2,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8107,
+              "grid": 8,
+              "result": "P11",
+              "top10": false
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8046,
+              "grid": 6,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7599,
+              "grid": 5,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7567,
+              "grid": 7,
+              "result": "P20",
+              "top10": false
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.5913,
+              "grid": 10,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5581,
+              "grid": 15,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P7",
+              "pred_rank": 11,
+              "prob": 0.4994,
+              "grid": 9
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P9",
+              "pred_rank": 12,
+              "prob": 0.4622,
+              "grid": 19
+            },
+            {
+              "driver": "Bortoleto",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 15,
+              "prob": 0.2253,
+              "grid": 11
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 10,
+      "race_name": "Belgian Grand Prix",
+      "date": "2026-07-19",
+      "scenarios": {
+        "real": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9186,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9161,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8975,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8819,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7913,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7628,
+              "grid": 2,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7504,
+              "grid": 13,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6906,
+              "grid": 9,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6774,
+              "grid": 7,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.6094,
+              "grid": 10,
+              "result": "P11",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "result": "P6",
+              "pred_rank": 11,
+              "prob": 0.5967,
+              "grid": 21
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P10",
+              "pred_rank": 12,
+              "prob": 0.5881,
+              "grid": 11
+            },
+            {
+              "driver": "Bortoleto",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 13,
+              "prob": 0.4593,
+              "grid": 8
+            }
+          ]
+        },
+        "pre": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9197,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9141,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8995,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8799,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7984,
+              "grid": 13,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7919,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7731,
+              "grid": 21,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7356,
+              "grid": 2,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6609,
+              "grid": 9,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6104,
+              "grid": 7,
+              "result": "P9",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P10",
+              "pred_rank": 12,
+              "prob": 0.5097,
+              "grid": 11
+            },
+            {
+              "driver": "Bortoleto",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 14,
+              "prob": 0.2839,
+              "grid": 8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 11,
+      "race_name": "Hungarian Grand Prix",
+      "date": "2026-07-26",
+      "scenarios": {
+        "real": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8969,
+              "grid": 5,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8968,
+              "grid": 6,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8946,
+              "grid": 2,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8928,
+              "grid": 7,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8237,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8159,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.778,
+              "grid": 8,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7638,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6394,
+              "grid": 9,
+              "result": "P10",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6276,
+              "grid": 11,
+              "result": "P8",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P9",
+              "pred_rank": 13,
+              "prob": 0.264,
+              "grid": 10
+            }
+          ]
+        },
+        "pre": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9118,
+              "grid": 7,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.907,
+              "grid": 6,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8989,
+              "grid": 5,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8866,
+              "grid": 2,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8074,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7905,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7689,
+              "grid": 8,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7492,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.64,
+              "grid": 11,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5915,
+              "grid": 9,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P9",
+              "pred_rank": 15,
+              "prob": 0.222,
+              "grid": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 12,
+      "race_name": "Dutch Grand Prix",
+      "date": "2026-08-23",
+      "scenarios": {
+        "real": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9005,
+              "grid": 2,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9003,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.89,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8694,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8168,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8005,
+              "grid": 4,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Red Bull",
+              "prob": 0.796,
+              "grid": 8,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7595,
+              "grid": 7,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5997,
+              "grid": 10,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5262,
+              "grid": 11,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 14,
+              "prob": 0.2245,
+              "grid": 13
+            },
+            {
+              "driver": "Alonso",
+              "team": "Aston Martin",
+              "result": "P9",
+              "pred_rank": 20,
+              "prob": 0.1125,
+              "grid": 18
+            }
+          ]
+        },
+        "pre": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9026,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8978,
+              "grid": 2,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.892,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8763,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7948,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7916,
+              "grid": 4,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Red Bull",
+              "prob": 0.7806,
+              "grid": 8,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7621,
+              "grid": 7,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5785,
+              "grid": 10,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Tsunoda",
+              "team": "Racing Bulls",
+              "prob": 0.5496,
+              "grid": 12,
+              "result": "P11",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P10",
+              "pred_rank": 11,
+              "prob": 0.5238,
+              "grid": 11
+            },
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 15,
+              "prob": 0.2566,
+              "grid": 13
+            },
+            {
+              "driver": "Alonso",
+              "team": "Aston Martin",
+              "result": "P9",
+              "pred_rank": 20,
+              "prob": 0.1016,
+              "grid": 18
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 13,
+      "race_name": "Italian Grand Prix",
+      "date": "2026-09-06",
+      "scenarios": {
+        "real": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9011,
+              "grid": 2,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8869,
+              "grid": 4,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8768,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8143,
+              "grid": 19,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.795,
+              "grid": 8,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7885,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7328,
+              "grid": 5,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.6645,
+              "grid": 1,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.6303,
+              "grid": 7,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Red Bull",
+              "prob": 0.6082,
+              "grid": 22,
+              "result": "P14",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P8",
+              "pred_rank": 11,
+              "prob": 0.6053,
+              "grid": 9
+            },
+            {
+              "driver": "Tsunoda",
+              "team": "Racing Bulls",
+              "result": "P10",
+              "pred_rank": 13,
+              "prob": 0.3419,
+              "grid": 15
+            }
+          ]
+        },
+        "pre": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8993,
+              "grid": 19,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8986,
+              "grid": 2,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8856,
+              "grid": 4,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8716,
+              "grid": 3,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8081,
+              "grid": 8,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7922,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Red Bull",
+              "prob": 0.7746,
+              "grid": 22,
+              "result": "P14",
+              "top10": false
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7229,
+              "grid": 5,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5616,
+              "grid": 9,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Tsunoda",
+              "team": "Racing Bulls",
+              "prob": 0.5093,
+              "grid": 15,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P7",
+              "pred_rank": 11,
+              "prob": 0.5084,
+              "grid": 1
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P9",
+              "pred_rank": 12,
+              "prob": 0.4593,
+              "grid": 7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 14,
+      "race_name": "Spanish Grand Prix",
+      "date": "2026-09-13",
+      "scenarios": {
+        "real": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.913,
+              "grid": 2,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9025,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.889,
+              "grid": 4,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8686,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8426,
+              "grid": 1,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8046,
+              "grid": 7,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Red Bull",
+              "prob": 0.8003,
+              "grid": 8,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7715,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6104,
+              "grid": 10,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "prob": 0.5916,
+              "grid": 9,
+              "result": "P7",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P10",
+              "pred_rank": 14,
+              "prob": 0.3133,
+              "grid": 11
+            }
+          ]
+        },
+        "pre": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9119,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.909,
+              "grid": 2,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8879,
+              "grid": 4,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8715,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.822,
+              "grid": 1,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8139,
+              "grid": 7,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Red Bull",
+              "prob": 0.7768,
+              "grid": 8,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7484,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5935,
+              "grid": 10,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5649,
+              "grid": 14,
+              "result": "P12",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P7",
+              "pred_rank": 12,
+              "prob": 0.4701,
+              "grid": 9
+            },
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P10",
+              "pred_rank": 14,
+              "prob": 0.2973,
+              "grid": 11
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 15,
+      "race_name": "Azerbaijan Grand Prix",
+      "date": "2026-09-26",
+      "scenarios": {
+        "real": {
+          "hits": 6,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9191,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8834,
+              "grid": 2,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8817,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8673,
+              "grid": 16,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8323,
+              "grid": 3,
+              "result": "P13",
+              "top10": false
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8317,
+              "grid": 5,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.8169,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.768,
+              "grid": 8,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.6533,
+              "grid": 7,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.646,
+              "grid": 11,
+              "result": "P12",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P7",
+              "pred_rank": 12,
+              "prob": 0.4383,
+              "grid": 15
+            },
+            {
+              "driver": "Bearman",
+              "team": "Haas",
+              "result": "P9",
+              "pred_rank": 13,
+              "prob": 0.3878,
+              "grid": 10
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "result": "P8",
+              "pred_rank": 14,
+              "prob": 0.2505,
+              "grid": 13
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P10",
+              "pred_rank": 17,
+              "prob": 0.2037,
+              "grid": 14
+            }
+          ]
+        },
+        "pre": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9171,
+              "grid": 16,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9139,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8873,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8749,
+              "grid": 2,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.831,
+              "grid": 5,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8157,
+              "grid": 3,
+              "result": "P13",
+              "top10": false
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.786,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7812,
+              "grid": 8,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.646,
+              "grid": 11,
+              "result": "P12",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6093,
+              "grid": 15,
+              "result": "P7",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Bearman",
+              "team": "Haas",
+              "result": "P9",
+              "pred_rank": 15,
+              "prob": 0.2292,
+              "grid": 10
+            },
+            {
+              "driver": "Ocon",
+              "team": "Haas",
+              "result": "P8",
+              "pred_rank": 16,
+              "prob": 0.2127,
+              "grid": 13
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P10",
+              "pred_rank": 17,
+              "prob": 0.1654,
+              "grid": 14
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 16,
+      "race_name": "Bahrain Grand Prix in Malaysia",
+      "date": "2026-10-04",
+      "scenarios": {
+        "real": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9018,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8865,
+              "grid": 7,
+              "result": "P20",
+              "top10": false
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8801,
+              "grid": 2,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8546,
+              "grid": 4,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8025,
+              "grid": 5,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7995,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7767,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7716,
+              "grid": 8,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.5777,
+              "grid": 11,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5538,
+              "grid": 9,
+              "result": "P16",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Alonso",
+              "team": "Aston Martin",
+              "result": "P8",
+              "pred_rank": 15,
+              "prob": 0.2241,
+              "grid": 12
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "result": "P10",
+              "pred_rank": 18,
+              "prob": 0.1955,
+              "grid": 22
+            }
+          ]
+        },
+        "pre": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9031,
+              "grid": 7,
+              "result": "P20",
+              "top10": false
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8967,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8688,
+              "grid": 2,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8537,
+              "grid": 4,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8017,
+              "grid": 5,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7806,
+              "grid": 6,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7637,
+              "grid": 8,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7544,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.5777,
+              "grid": 11,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5564,
+              "grid": 22,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Alonso",
+              "team": "Aston Martin",
+              "result": "P8",
+              "pred_rank": 20,
+              "prob": 0.1078,
+              "grid": 12
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 17,
+      "race_name": "Singapore Grand Prix",
+      "date": "2026-10-11",
+      "scenarios": {
+        "real": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8933,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8791,
+              "grid": 3,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8656,
+              "grid": 2,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8116,
+              "grid": 19,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.8068,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7985,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7795,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6719,
+              "grid": 8,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.6506,
+              "grid": 22,
+              "result": "P10",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6227,
+              "grid": 9,
+              "result": "P15",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 12,
+              "prob": 0.4005,
+              "grid": 10
+            }
+          ]
+        },
+        "pre": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8949,
+              "grid": 19,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8926,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.873,
+              "grid": 3,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8547,
+              "grid": 2,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7977,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7845,
+              "grid": 22,
+              "result": "P10",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7828,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7775,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6074,
+              "grid": 8,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5599,
+              "grid": 9,
+              "result": "P15",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 13,
+              "prob": 0.3093,
+              "grid": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 18,
+      "race_name": "United States Grand Prix",
+      "date": "2026-10-25",
+      "scenarios": {
+        "real": {
+          "hits": 10,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9167,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8977,
+              "grid": 6,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8858,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8796,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.8316,
+              "grid": 3,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.822,
+              "grid": 2,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.798,
+              "grid": 8,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7898,
+              "grid": 7,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6275,
+              "grid": 9,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.466,
+              "grid": 10,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": []
+        },
+        "pre": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.907,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.904,
+              "grid": 6,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8881,
+              "grid": 5,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8794,
+              "grid": 4,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8154,
+              "grid": 8,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8002,
+              "grid": 7,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.798,
+              "grid": 2,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7942,
+              "grid": 3,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.5825,
+              "grid": 9,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.512,
+              "grid": 14,
+              "result": "P12",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P10",
+              "pred_rank": 11,
+              "prob": 0.4645,
+              "grid": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 19,
+      "race_name": "Mexico City Grand Prix",
+      "date": "2026-11-01",
+      "scenarios": {
+        "real": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9108,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9092,
+              "grid": 2,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8994,
+              "grid": 1,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8926,
+              "grid": 3,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.8288,
+              "grid": 7,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.8204,
+              "grid": 5,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8147,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7615,
+              "grid": 12,
+              "result": "P13",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6283,
+              "grid": 8,
+              "result": "Abandono",
+              "top10": false
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "prob": 0.5059,
+              "grid": 9,
+              "result": "P17",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Bortoleto",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 13,
+              "prob": 0.3335,
+              "grid": 13
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "result": "P7",
+              "pred_rank": 14,
+              "prob": 0.3051,
+              "grid": 22
+            },
+            {
+              "driver": "Hirakawa",
+              "team": "Haas",
+              "result": "P10",
+              "pred_rank": 17,
+              "prob": 0.2387,
+              "grid": 18
+            }
+          ]
+        },
+        "pre": {
+          "hits": 8,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.9108,
+              "grid": 4,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.9034,
+              "grid": 2,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8906,
+              "grid": 1,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8885,
+              "grid": 3,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8185,
+              "grid": 6,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.8179,
+              "grid": 5,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.8171,
+              "grid": 7,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8088,
+              "grid": 12,
+              "result": "P13",
+              "top10": false
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.5816,
+              "grid": 22,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5533,
+              "grid": 8,
+              "result": "Abandono",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Bortoleto",
+              "team": "Audi",
+              "result": "P8",
+              "pred_rank": 14,
+              "prob": 0.3323,
+              "grid": 13
+            },
+            {
+              "driver": "Hirakawa",
+              "team": "Haas",
+              "result": "P10",
+              "pred_rank": 16,
+              "prob": 0.2506,
+              "grid": 18
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 20,
+      "race_name": "Brazilian Grand Prix",
+      "date": "2026-11-08",
+      "scenarios": {
+        "real": {
+          "hits": 10,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8933,
+              "grid": 2,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8669,
+              "grid": 7,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8169,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.8063,
+              "grid": 5,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.7922,
+              "grid": 14,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.7647,
+              "grid": 20,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.7439,
+              "grid": 10,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.7056,
+              "grid": 3,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.6446,
+              "grid": 21,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "prob": 0.5827,
+              "grid": 4,
+              "result": "P10",
+              "top10": true
+            }
+          ],
+          "missed": []
+        },
+        "pre": {
+          "hits": 9,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8854,
+              "grid": 2,
+              "result": "P5",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.88,
+              "grid": 7,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8726,
+              "grid": 20,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8635,
+              "grid": 14,
+              "result": "P8",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.7937,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.7913,
+              "grid": 21,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.776,
+              "grid": 10,
+              "result": "P6",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.7752,
+              "grid": 5,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.5645,
+              "grid": 3,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5208,
+              "grid": 18,
+              "result": "P11",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Hülkenberg",
+              "team": "Audi",
+              "result": "P10",
+              "pred_rank": 12,
+              "prob": 0.3453,
+              "grid": 4
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "real": {
+      "races": 20,
+      "hits": 154,
+      "possible": 200,
+      "accuracy": 0.7932,
+      "auc": 0.8646,
+      "perfect": 2
+    },
+    "pre": {
+      "races": 19,
+      "hits": 146,
+      "possible": 190,
+      "accuracy": 0.7919,
+      "auc": 0.8603,
+      "perfect": 0
+    }
+  },
+  "last_race": "Brazilian Grand Prix",
+  "last_round": 20
+}

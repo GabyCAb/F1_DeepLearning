@@ -127,6 +127,8 @@ As quatro equipes de ponta (Mercedes, Ferrari, McLaren e Red Bull) ocupam as 8 p
 
 **Grid real quando disponível:** depois do classificatório, a posição oficial de largada de cada piloto pode ser informada em `GRID_REAL` no script (foi assim no GP do Brasil). Sem ela, o `grid` é substituído pela média de grid do piloto na temporada — uma projeção da tendência de desempenho, não do resultado do fim de semana. O modelo prevê "Top 10 sim/não", não a ordem de chegada: as listas acima estão ordenadas por probabilidade, não por posição prevista.
 
+**Previsões × resultados reais (`comparacao_previsoes.html`).** Um segundo painel, no mesmo visual do dashboard, refaz a previsão de cada corrida já disputada de 2026 usando só o que se sabia antes dela e compara com o resultado real. Ele mostra o Top 10 previsto, a posição de chegada de cada piloto (✓ terminou no Top 10, ✗ ficou fora) e quem pontuou fora da previsão. Há dois cenários: **com grid real** (depois do classificatório) e **antes do classificatório** (grid médio, a mesma aproximação usada para as corridas futuras). Até o GP do Brasil, o modelo acertou 154 de 200 vagas no Top 10 com o grid real (7,7 por corrida, 10/10 nos EUA e no Brasil) e 146 de 190 antes do classificatório. É uma simulação retrospectiva com o modelo atual, não o registro das previsões publicadas na época. Para atualizar depois de cada corrida: `python comparar_previsoes.py`.
+
 **Histórico das previsões de 2026:**
 - **04/11 (forma até o México, modelo anterior):** a projeção feita com dados até a Holanda tinha acertado 7 de 10 pilotos do Top 10 na Itália, 9 na Espanha e 6 no Azerbaijão.
 - **07/11 (GP do Brasil com o grid real, modelo anterior):** as punições de motor (Hamilton, Verstappen e Pérez no fundo; Leclerc −10; Russell −5) derrubaram Hamilton para 24% e Verstappen para 18%. A previsão acertou 7 de 10. Verstappen terminou em 2º, Hamilton em 9º e Leclerc em 8º.
@@ -149,6 +151,8 @@ As quatro equipes de ponta (Mercedes, Ferrari, McLaren e Red Bull) ocupam as 8 p
 - `dashboard_data.json` — métricas, curvas e previsões exportadas pelo notebook (fonte dos dois artefatos abaixo)
 - `dashboard.html` — painel visual interativo com os resultados (métricas, curvas de treino, matriz de confusão, ROC e previsões), abre em qualquer navegador sem precisar de servidor ou instalação
 - `predicoes_proximas_corridas_2026.csv` — probabilidades de Top10 previstas para as próximas corridas (hoje: Brasil, Las Vegas, Catar e Abu Dhabi)
+- `comparacao_previsoes.html` — painel de previsões × resultados reais das corridas de 2026 (abre no navegador, sem instalação)
+- `comparar_previsoes.py` — regera a comparação (`comparacao_previsoes.json` + dados do HTML) com os resultados mais recentes
 - `prever_proximas_corridas.py` — recalcula as previsões a partir do modelo salvo e atualiza o CSV, o `dashboard_data.json` e o `dashboard.html`
 - `dataframes/atualizar_dados.py` — busca na API jolpica-f1 as corridas que faltam e o calendário atualizado
 - `f1_top10_model.keras` — modelo treinado salvo (pode ser recarregado com `keras.models.load_model(...)` sem precisar retreinar)

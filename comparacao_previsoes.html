@@ -1,0 +1,524 @@
+<title>F1 Previsões vs Resultados</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================= TOKENS ============================= */
+:root{
+  --bg:#f4f5f7;
+  --surface:#ffffff;
+  --surface-2:#eceff3;
+  --border:#dde1e7;
+  --text-primary:#12161c;
+  --text-secondary:#4b5563;
+  --text-muted:#8791a0;
+
+  --accent:#0891a8;         /* teal — magnitude / primary series */
+  --accent-tint:#d9eef1;
+  --accent-2:#c9700a;       /* amber — secondary series */
+  --accent-2-tint:#f3e3cf;
+
+  --good:#1e8e5a;
+  --good-tint:#dcf0e6;
+  --critical:#c13b3b;
+  --critical-tint:#f6dede;
+
+  --font-display:'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body:'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-mono:'IBM Plex Mono', 'Consolas', monospace;
+
+  --shadow-1: 0 1px 2px rgba(20,24,30,0.04), 0 1px 1px rgba(20,24,30,0.03);
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0f14;
+    --surface:#11161d;
+    --surface-2:#161d25;
+    --border:#232b34;
+    --text-primary:#e8ecf1;
+    --text-secondary:#a7b0bc;
+    --text-muted:#66707c;
+
+    --accent:#00a0b5;
+    --accent-tint:#0f2a30;
+    --accent-2:#bd7a2a;
+    --accent-2-tint:#2e2115;
+
+    --good:#2fae72;
+    --good-tint:#0f2a1e;
+    --critical:#e0615d;
+    --critical-tint:#331c1c;
+
+    --shadow-1: 0 1px 2px rgba(0,0,0,0.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b0f14;
+  --surface:#11161d;
+  --surface-2:#161d25;
+  --border:#232b34;
+  --text-primary:#e8ecf1;
+  --text-secondary:#a7b0bc;
+  --text-muted:#66707c;
+
+  --accent:#00a0b5;
+  --accent-tint:#0f2a30;
+  --accent-2:#bd7a2a;
+  --accent-2-tint:#2e2115;
+
+  --good:#2fae72;
+  --good-tint:#0f2a1e;
+  --critical:#e0615d;
+  --critical-tint:#331c1c;
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; }
+body{
+  background:var(--bg);
+  color:var(--text-primary);
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{ background:var(--accent); color:#fff; }
+
+.wrap{ max-width:1180px; margin:0 auto; padding:32px 24px 80px; }
+
+/* ============================= TYPE ============================= */
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+}
+h1{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(32px,5vw,52px);
+  line-height:1.02;
+  letter-spacing:-.01em;
+  margin:6px 0 8px;
+  text-wrap:balance;
+}
+h2{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:24px;
+  letter-spacing:-.005em;
+  margin:0 0 4px;
+  text-wrap:balance;
+}
+h3{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:16px;
+  margin:0;
+  color:var(--text-primary);
+}
+.subtitle{ color:var(--text-secondary); font-size:16px; max-width:640px; margin:0; }
+.section-lede{ color:var(--text-secondary); font-size:14px; max-width:620px; margin:4px 0 0; }
+.tnum{ font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+a{ color:var(--accent); }
+
+/* ============================= LAYOUT ============================= */
+header.hero{
+  display:flex; flex-direction:column; gap:2px;
+  padding-bottom:28px; margin-bottom:28px;
+  border-bottom:1px solid var(--border);
+}
+.hero-meta{
+  display:flex; flex-wrap:wrap; gap:18px; margin-top:16px;
+  font-family:var(--font-mono); font-size:12.5px; color:var(--text-muted);
+}
+.hero-meta b{ color:var(--text-secondary); font-weight:600; }
+
+section{ margin:44px 0; }
+section > .section-head{ margin-bottom:18px; }
+
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+@media (max-width:860px){ .grid-2, .grid-3{ grid-template-columns:1fr; } }
+
+.panel{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px 22px;
+  box-shadow:var(--shadow-1);
+}
+
+/* ============================= STAT TILES ============================= */
+.tiles{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+@media (max-width:860px){ .tiles{ grid-template-columns:repeat(2,1fr); } }
+.tile{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:16px 18px; box-shadow:var(--shadow-1);
+}
+.tile .tile-label{ font-size:12px; color:var(--text-muted); font-weight:500; }
+.tile .tile-value{
+  font-family:var(--font-mono); font-weight:600; font-size:30px; letter-spacing:-.01em;
+  margin-top:6px; color:var(--text-primary);
+}
+.tile .tile-sub{ font-size:12px; color:var(--text-secondary); margin-top:4px; }
+.tile.accent .tile-value{ color:var(--accent); }
+
+/* ============================= CHARTS ============================= */
+.chart-svg{ width:100%; height:auto; display:block; overflow:visible; }
+.legend{ display:flex; gap:16px; margin-top:10px; font-size:12.5px; color:var(--text-secondary); }
+.legend .dot{ display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:6px; vertical-align:-1px; }
+.axis-label{ font-family:var(--font-mono); font-size:10.5px; fill:var(--text-muted); }
+.grid-line{ stroke:var(--border); stroke-width:1; }
+.tooltip{
+  position:absolute; pointer-events:none; opacity:0; transition:opacity .1s;
+  background:var(--text-primary); color:var(--bg);
+  font-family:var(--font-mono); font-size:11.5px; padding:6px 9px; border-radius:6px;
+  white-space:nowrap; z-index:5; box-shadow:var(--shadow-1);
+}
+.chart-wrap{ position:relative; }
+.crosshair{ stroke:var(--text-muted); stroke-width:1; stroke-dasharray:3 3; opacity:0; }
+
+details.table-toggle{ margin-top:12px; }
+details.table-toggle summary{
+  cursor:pointer; font-size:12.5px; color:var(--accent); font-weight:500;
+  font-family:var(--font-mono); list-style:none;
+}
+details.table-toggle summary::-webkit-details-marker{ display:none; }
+details.table-toggle summary::before{ content:'▸ '; }
+details.table-toggle[open] summary::before{ content:'▾ '; }
+table.data-table{
+  width:100%; border-collapse:collapse; margin-top:10px; font-size:12.5px;
+  font-family:var(--font-mono);
+}
+table.data-table th, table.data-table td{
+  text-align:right; padding:5px 8px; border-bottom:1px solid var(--border);
+}
+table.data-table th:first-child, table.data-table td:first-child{ text-align:left; }
+table.data-table th{ color:var(--text-muted); font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.04em; }
+.table-scroll{ overflow-x:auto; }
+
+/* ============================= CONFUSION MATRIX ============================= */
+.cm-grid{ display:grid; grid-template-columns:auto 1fr 1fr; gap:6px; align-items:stretch; }
+.cm-cell{
+  border-radius:8px; padding:14px 10px; text-align:center;
+  display:flex; flex-direction:column; justify-content:center; gap:2px;
+  min-height:84px;
+}
+.cm-cell .cm-count{ font-family:var(--font-mono); font-weight:600; font-size:26px; }
+.cm-cell .cm-tag{ font-size:11px; letter-spacing:.04em; text-transform:uppercase; font-weight:600; }
+.cm-cell .cm-pct{ font-size:11.5px; color:var(--text-secondary); }
+.cm-good{ background:var(--good-tint); }
+.cm-good .cm-count, .cm-good .cm-tag{ color:var(--good); }
+.cm-bad{ background:var(--critical-tint); }
+.cm-bad .cm-count, .cm-bad .cm-tag{ color:var(--critical); }
+.cm-axis{ font-size:11px; color:var(--text-muted); display:flex; align-items:center; justify-content:center; text-align:center; padding:0 4px; }
+.cm-axis.head{ font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.04em; font-size:10.5px; }
+
+/* ============================= PREDICTIONS ============================= */
+.race-card .race-date{ font-family:var(--font-mono); font-size:12px; color:var(--text-muted); }
+.driver-row{
+  display:grid; grid-template-columns:20px 1fr 56px; gap:10px; align-items:center;
+  padding:7px 0; border-bottom:1px solid var(--border);
+}
+.driver-row:last-child{ border-bottom:none; }
+.driver-rank{ font-family:var(--font-mono); font-size:12px; color:var(--text-muted); }
+.driver-name-wrap{ display:flex; flex-direction:column; gap:4px; }
+.driver-name{ font-size:13.5px; font-weight:500; }
+.driver-team{ font-size:11px; color:var(--text-muted); }
+.prob-bar-track{ height:5px; background:var(--surface-2); border-radius:3px; margin-top:2px; overflow:hidden; }
+.prob-bar-fill{ height:100%; background:var(--accent); border-radius:3px; }
+.driver-prob{ font-family:var(--font-mono); font-size:13px; text-align:right; font-weight:600; color:var(--text-primary); }
+
+/* ============================= FOOTER / NOTES ============================= */
+.callout{
+  border:1px solid var(--border); border-left:3px solid var(--accent-2);
+  background:var(--accent-2-tint); border-radius:8px; padding:14px 16px;
+  font-size:13.5px; color:var(--text-secondary);
+}
+.callout b{ color:var(--text-primary); }
+.feature-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.feature-tag{
+  font-family:var(--font-mono); font-size:11px; padding:3px 8px; border-radius:5px;
+  background:var(--surface-2); border:1px solid var(--border); color:var(--text-secondary);
+}
+footer{
+  margin-top:56px; padding-top:20px; border-top:1px solid var(--border);
+  font-size:12.5px; color:var(--text-muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+}
+</style>
+<style>
+/* ============================= COMPARAÇÃO ============================= */
+.hero-links{ margin-top:14px; font-size:13px; }
+.hero-links a{ font-family:var(--font-mono); font-size:12.5px; text-decoration:none; }
+.hero-links a:hover{ text-decoration:underline; }
+
+.seg{ display:inline-flex; background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:3px; gap:3px; }
+.seg button{
+  font:inherit; font-size:13px; font-weight:500; color:var(--text-secondary);
+  background:transparent; border:0; border-radius:6px; padding:7px 14px; cursor:pointer;
+}
+.seg button[aria-pressed="true"]{ background:var(--surface); color:var(--text-primary); box-shadow:var(--shadow-1); }
+.seg button:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
+.controls{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:18px; }
+.controls .hint{ font-size:13px; color:var(--text-secondary); max-width:620px; }
+
+.race-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+.race-head > div{ min-width:0; }
+.race-head .race-date{ white-space:nowrap; }
+.hits-pill{
+  font-family:var(--font-mono); font-size:12px; font-weight:600; white-space:nowrap;
+  padding:3px 9px; border-radius:999px; background:var(--accent-tint); color:var(--text-primary);
+  border:1px solid var(--border);
+}
+.hits-pill b{ color:var(--accent); }
+.hits-pill.perfect{ background:var(--good-tint); }
+.hits-pill.perfect b{ color:var(--good); }
+
+.cmp-row{
+  display:grid; grid-template-columns:20px 1fr 52px 84px; gap:10px; align-items:center;
+  padding:7px 0; border-bottom:1px solid var(--border);
+}
+.cmp-row:last-child{ border-bottom:none; }
+.res-badge{
+  font-family:var(--font-mono); font-size:11.5px; font-weight:600; text-align:center;
+  padding:3px 6px; border-radius:6px; white-space:nowrap; color:var(--text-primary);
+}
+.res-badge .ic{ font-weight:700; margin-right:3px; }
+.res-badge.ok{ background:var(--good-tint); }
+.res-badge.ok .ic{ color:var(--good); }
+.res-badge.miss{ background:var(--critical-tint); }
+.res-badge.miss .ic{ color:var(--critical); }
+.grid-note{ color:var(--text-muted); }
+
+.missed{ margin-top:12px; padding-top:10px; border-top:1px dashed var(--border); font-size:12.5px; color:var(--text-secondary); }
+.missed .lbl{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:4px; }
+.missed .m-item{ display:block; }
+.missed .m-item b{ color:var(--text-primary); font-weight:500; }
+
+.bar{ fill:var(--accent); }
+.bar-hit{ fill:transparent; cursor:default; }
+.bar-group:hover .bar{ opacity:.8; }
+</style>
+
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">Projeto · Inteligência Artificial</span>
+    <h1>Previsões × Resultados — 2026</h1>
+    <p class="subtitle">Para cada corrida já disputada, o modelo prevê o Top&nbsp;10 usando só o que se sabia antes da largada, e a previsão é comparada com o resultado real.</p>
+    <div class="hero-meta">
+      <span><b id="meta-races">—</b> corridas</span>
+      <span>até o <b id="meta-last">—</b></span>
+      <span>temporada <b>fora do treino</b> (treino ≤2023)</span>
+      <span>Fonte: <b>jolpica-f1</b></span>
+    </div>
+    <div class="hero-links"><a href="dashboard.html">← Voltar ao painel do modelo</a></div>
+  </header>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Cenário de previsão">
+      <button type="button" data-sc="real" aria-pressed="true">Com grid real</button>
+      <button type="button" data-sc="pre" aria-pressed="false">Antes do classificatório</button>
+    </div>
+    <span class="hint" id="sc-hint"></span>
+  </div>
+
+  <section id="resumo" style="margin-top:0;">
+    <div class="tiles">
+      <div class="tile accent">
+        <div class="tile-label">Pilotos do Top 10 acertados</div>
+        <div class="tile-value tnum" id="t-hits">—</div>
+        <div class="tile-sub" id="t-hits-sub">—</div>
+      </div>
+      <div class="tile accent">
+        <div class="tile-label">Média por corrida</div>
+        <div class="tile-value tnum" id="t-avg">—</div>
+        <div class="tile-sub">de 10 vagas no Top 10</div>
+      </div>
+      <div class="tile">
+        <div class="tile-label">Acurácia (Top 10 sim/não)</div>
+        <div class="tile-value tnum" id="t-acc">—</div>
+        <div class="tile-sub" id="t-auc">—</div>
+      </div>
+      <div class="tile">
+        <div class="tile-label">Corridas com 10/10</div>
+        <div class="tile-value tnum" id="t-perfect">—</div>
+        <div class="tile-sub" id="t-worst">—</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-corrida">
+    <div class="section-head">
+      <h2>Acertos por corrida</h2>
+      <p class="section-lede">Quantos dos 10 pilotos previstos terminaram de fato no Top 10.</p>
+    </div>
+    <div class="panel">
+      <div class="chart-wrap"><svg class="chart-svg" id="chart-hits" viewBox="0 0 1040 220" role="img" aria-label="Acertos por corrida"></svg><div class="tooltip" id="tt-hits"></div></div>
+      <details class="table-toggle"><summary>ver tabela por corrida</summary>
+        <div class="table-scroll"><table class="data-table" id="table-hits"></table></div>
+      </details>
+    </div>
+  </section>
+
+  <section id="corridas">
+    <div class="section-head">
+      <h2>Previsto × real, corrida a corrida</h2>
+      <p class="section-lede">Top 10 previsto em ordem de probabilidade, com a posição de chegada real de cada piloto. <span style="color:var(--good);font-weight:600">✓</span> terminou no Top 10 · <span style="color:var(--critical);font-weight:600">✗</span> ficou fora. Corridas mais recentes primeiro.</p>
+    </div>
+    <div class="grid-3" id="races-wrap"></div>
+  </section>
+
+  <section id="metodologia">
+    <div class="section-head"><h2>Como a comparação foi feita</h2></div>
+    <div class="callout">
+      <b>Modelo:</b> o mesmo <span class="tnum">f1_top10_model.keras</span> do painel, treinado só com temporadas até 2023 — toda a temporada 2026 é inédita para ele.<br>
+      <b>Sem olhar o futuro:</b> a forma do piloto e da equipe usa apenas as corridas anteriores a cada GP.<br>
+      <b>Com grid real:</b> usa a posição oficial de largada (já com punições) — é a previsão que dá para fazer depois do classificatório.<br>
+      <b>Antes do classificatório:</b> troca o grid pela média de grid do piloto nas corridas anteriores (pilotos com menos de 3 corridas recebem a média do carro) — é a mesma aproximação usada para as corridas futuras. Não existe na 1ª corrida do ano.<br>
+      <b>Atenção:</b> é uma simulação retrospectiva com o modelo atual (corrigido em 09/11/2026), não o registro das previsões publicadas na época.
+    </div>
+  </section>
+
+  <footer>
+    <span>Dados: jolpica-f1 (Ergast, CC BY-NC-SA 4.0) · uso educacional</span>
+    <span>Gerado por comparar_previsoes.py</span>
+  </footer>
+
+</div>
+
+<script>
+const DATA = {"season": 2026, "races": [{"round": 1, "race_name": "Australian Grand Prix", "date": "2026-03-08", "scenarios": {"real": {"hits": 5, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9396, "grid": 2, "result": "P2", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8695, "grid": 7, "result": "P4", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7992, "grid": 5, "result": "Não largou", "top10": false}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7707, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6746, "grid": 8, "result": "P13", "top10": false}, {"driver": "Russell", "team": "Mercedes", "prob": 0.6604, "grid": 1, "result": "P1", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.628, "grid": 4, "result": "P3", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.6232, "grid": 6, "result": "P5", "top10": true}, {"driver": "Ocon", "team": "Haas", "prob": 0.6154, "grid": 13, "result": "P11", "top10": false}, {"driver": "Hülkenberg", "team": "Audi", "prob": 0.5562, "grid": 11, "result": "Não largou", "top10": false}], "missed": [{"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P8", "pred_rank": 11, "prob": 0.4817, "grid": 9}, {"driver": "Bortoleto", "team": "Audi", "result": "P9", "pred_rank": 12, "prob": 0.4298, "grid": 10}, {"driver": "Bearman", "team": "Haas", "result": "P7", "pred_rank": 13, "prob": 0.3812, "grid": 12}, {"driver": "Gasly", "team": "Alpine", "result": "P10", "pred_rank": 14, "prob": 0.3523, "grid": 14}, {"driver": "Max Verstappen", "team": "Red Bull", "result": "P6", "pred_rank": 20, "prob": 0.1731, "grid": 20}]}}}, {"round": 2, "race_name": "Chinese Grand Prix", "date": "2026-03-15", "scenarios": {"real": {"hits": 6, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9633, "grid": 2, "result": "P2", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.955, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.9159, "grid": 3, "result": "P3", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.9155, "grid": 4, "result": "P4", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7441, "grid": 6, "result": "Não largou", "top10": false}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7049, "grid": 8, "result": "Abandono", "top10": false}, {"driver": "Bearman", "team": "Haas", "prob": 0.6759, "grid": 10, "result": "P5", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.6427, "grid": 5, "result": "Não largou", "top10": false}, {"driver": "Ocon", "team": "Haas", "prob": 0.5878, "grid": 13, "result": "P14", "top10": false}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5657, "grid": 7, "result": "P6", "top10": true}], "missed": [{"driver": "Hadjar", "team": "Red Bull", "result": "P8", "pred_rank": 12, "prob": 0.491, "grid": 9}, {"driver": "Colapinto", "team": "Alpine", "result": "P10", "pred_rank": 13, "prob": 0.4585, "grid": 12}, {"driver": "Lawson", "team": "Racing Bulls", "result": "P7", "pred_rank": 14, "prob": 0.3307, "grid": 14}, {"driver": "Sainz", "team": "Williams", "result": "P9", "pred_rank": 17, "prob": 0.1236, "grid": 17}]}, "pre": {"hits": 6, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9637, "grid": 2, "result": "P2", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9551, "grid": 1, "result": "P1", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.912, "grid": 4, "result": "P4", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.9097, "grid": 3, "result": "P3", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7059, "grid": 5, "result": "Não largou", "top10": false}, {"driver": "Norris", "team": "McLaren", "prob": 0.6715, "grid": 6, "result": "Não largou", "top10": false}, {"driver": "Ocon", "team": "Haas", "prob": 0.6701, "grid": 13, "result": "P14", "top10": false}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6476, "grid": 15, "result": "P12", "top10": false}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6082, "grid": 14, "result": "P7", "top10": true}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.5796, "grid": 12, "result": "P10", "top10": true}], "missed": [{"driver": "Hadjar", "team": "Red Bull", "result": "P8", "pred_rank": 11, "prob": 0.5792, "grid": 9}, {"driver": "Bearman", "team": "Haas", "result": "P5", "pred_rank": 13, "prob": 0.5771, "grid": 10}, {"driver": "Gasly", "team": "Alpine", "result": "P6", "pred_rank": 16, "prob": 0.2663, "grid": 7}, {"driver": "Sainz", "team": "Williams", "result": "P9", "pred_rank": 18, "prob": 0.1249, "grid": 17}]}}}, {"round": 3, "race_name": "Japanese Grand Prix", "date": "2026-03-29", "scenarios": {"real": {"hits": 8, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9601, "grid": 2, "result": "P4", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9554, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.9072, "grid": 6, "result": "P6", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.9069, "grid": 4, "result": "P3", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7351, "grid": 5, "result": "P5", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.6575, "grid": 7, "result": "P7", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.6314, "grid": 8, "result": "P12", "top10": false}, {"driver": "Piastri", "team": "McLaren", "prob": 0.6262, "grid": 3, "result": "P2", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6231, "grid": 10, "result": "P14", "top10": false}, {"driver": "Ocon", "team": "Haas", "prob": 0.5709, "grid": 12, "result": "P10", "top10": true}], "missed": [{"driver": "Max Verstappen", "team": "Red Bull", "result": "P8", "pred_rank": 11, "prob": 0.5681, "grid": 11}, {"driver": "Lawson", "team": "Racing Bulls", "result": "P9", "pred_rank": 13, "prob": 0.527, "grid": 14}]}, "pre": {"hits": 7, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9611, "grid": 2, "result": "P4", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9546, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.9129, "grid": 6, "result": "P6", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.9053, "grid": 4, "result": "P3", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7286, "grid": 5, "result": "P5", "top10": true}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.6651, "grid": 15, "result": "P16", "top10": false}, {"driver": "Piastri", "team": "McLaren", "prob": 0.6445, "grid": 3, "result": "P2", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.6333, "grid": 8, "result": "P12", "top10": false}, {"driver": "Bearman", "team": "Haas", "prob": 0.6317, "grid": 18, "result": "Abandono", "top10": false}, {"driver": "Ocon", "team": "Haas", "prob": 0.6306, "grid": 12, "result": "P10", "top10": true}], "missed": [{"driver": "Lawson", "team": "Racing Bulls", "result": "P9", "pred_rank": 11, "prob": 0.6145, "grid": 14}, {"driver": "Gasly", "team": "Alpine", "result": "P7", "pred_rank": 13, "prob": 0.5603, "grid": 7}, {"driver": "Max Verstappen", "team": "Red Bull", "result": "P8", "pred_rank": 14, "prob": 0.5568, "grid": 11}]}}}, {"round": 4, "race_name": "Miami Grand Prix", "date": "2026-05-03", "scenarios": {"real": {"hits": 8, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9429, "grid": 1, "result": "P1", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9396, "grid": 5, "result": "P4", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8837, "grid": 3, "result": "P8", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8746, "grid": 6, "result": "P6", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7374, "grid": 4, "result": "P2", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7017, "grid": 7, "result": "P3", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.6224, "grid": 2, "result": "P5", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5642, "grid": 9, "result": "Abandono", "top10": false}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.4798, "grid": 8, "result": "P7", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.4634, "grid": 11, "result": "Abandono", "top10": false}], "missed": [{"driver": "Sainz", "team": "Williams", "result": "P9", "pred_rank": 15, "prob": 0.2664, "grid": 13}, {"driver": "Albon", "team": "Williams", "result": "P10", "pred_rank": 17, "prob": 0.1775, "grid": 15}]}, "pre": {"hits": 6, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9455, "grid": 5, "result": "P4", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9423, "grid": 1, "result": "P1", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8805, "grid": 3, "result": "P8", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8767, "grid": 6, "result": "P6", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7264, "grid": 4, "result": "P2", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7252, "grid": 7, "result": "P3", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.5993, "grid": 22, "result": "Abandono", "top10": false}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5576, "grid": 9, "result": "Abandono", "top10": false}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.439, "grid": 16, "result": "P14", "top10": false}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.43, "grid": 11, "result": "Abandono", "top10": false}], "missed": [{"driver": "Max Verstappen", "team": "Red Bull", "result": "P5", "pred_rank": 11, "prob": 0.4191, "grid": 2}, {"driver": "Colapinto", "team": "Alpine", "result": "P7", "pred_rank": 14, "prob": 0.3149, "grid": 8}, {"driver": "Sainz", "team": "Williams", "result": "P9", "pred_rank": 17, "prob": 0.1759, "grid": 13}, {"driver": "Albon", "team": "Williams", "result": "P10", "pred_rank": 19, "prob": 0.1366, "grid": 15}]}}}, {"round": 5, "race_name": "Canadian Grand Prix", "date": "2026-05-24", "scenarios": {"real": {"hits": 6, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9479, "grid": 1, "result": "Abandono", "top10": false}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9421, "grid": 2, "result": "P1", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8657, "grid": 8, "result": "P4", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8657, "grid": 5, "result": "P2", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7956, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7796, "grid": 4, "result": "P11", "top10": false}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.6501, "grid": 6, "result": "P3", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.6212, "grid": 7, "result": "P5", "top10": true}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.5495, "grid": 10, "result": "P6", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5304, "grid": 9, "result": "Não largou", "top10": false}], "missed": [{"driver": "Gasly", "team": "Alpine", "result": "P8", "pred_rank": 11, "prob": 0.4626, "grid": 14}, {"driver": "Lawson", "team": "Racing Bulls", "result": "P7", "pred_rank": 12, "prob": 0.4242, "grid": 12}, {"driver": "Bearman", "team": "Haas", "result": "P10", "pred_rank": 13, "prob": 0.3593, "grid": 16}, {"driver": "Sainz", "team": "Williams", "result": "P9", "pred_rank": 17, "prob": 0.2739, "grid": 15}]}, "pre": {"hits": 7, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9455, "grid": 1, "result": "Abandono", "top10": false}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9437, "grid": 2, "result": "P1", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8836, "grid": 8, "result": "P4", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.864, "grid": 5, "result": "P2", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7844, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7729, "grid": 4, "result": "P11", "top10": false}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.5972, "grid": 6, "result": "P3", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5731, "grid": 14, "result": "P8", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.5576, "grid": 7, "result": "P5", "top10": true}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.46, "grid": 10, "result": "P6", "top10": true}], "missed": [{"driver": "Bearman", "team": "Haas", "result": "P10", "pred_rank": 11, "prob": 0.4452, "grid": 16}, {"driver": "Lawson", "team": "Racing Bulls", "result": "P7", "pred_rank": 12, "prob": 0.4304, "grid": 12}, {"driver": "Sainz", "team": "Williams", "result": "P9", "pred_rank": 17, "prob": 0.2371, "grid": 15}]}}}, {"round": 6, "race_name": "Monaco Grand Prix", "date": "2026-06-07", "scenarios": {"real": {"hits": 6, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9426, "grid": 1, "result": "P1", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9262, "grid": 6, "result": "P12", "top10": false}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8983, "grid": 4, "result": "Abandono", "top10": false}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8958, "grid": 3, "result": "P2", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7685, "grid": 8, "result": "Abandono", "top10": false}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.759, "grid": 2, "result": "Abandono", "top10": false}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7473, "grid": 7, "result": "P4", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.6949, "grid": 5, "result": "P3", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.6334, "grid": 9, "result": "P7", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.5678, "grid": 10, "result": "P5", "top10": true}], "missed": [{"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P6", "pred_rank": 13, "prob": 0.3636, "grid": 15}, {"driver": "Ocon", "team": "Haas", "result": "P9", "pred_rank": 15, "prob": 0.295, "grid": 17}, {"driver": "Albon", "team": "Williams", "result": "P8", "pred_rank": 17, "prob": 0.266, "grid": 11}, {"driver": "Alonso", "team": "Aston Martin", "result": "P10", "pred_rank": 22, "prob": 0.1109, "grid": 21}]}, "pre": {"hits": 5, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9417, "grid": 1, "result": "P1", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.935, "grid": 6, "result": "P12", "top10": false}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8964, "grid": 4, "result": "Abandono", "top10": false}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8892, "grid": 3, "result": "P2", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7843, "grid": 8, "result": "Abandono", "top10": false}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7636, "grid": 7, "result": "P4", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7191, "grid": 2, "result": "Abandono", "top10": false}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.6593, "grid": 5, "result": "P3", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.6124, "grid": 9, "result": "P7", "top10": true}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.6117, "grid": 14, "result": "P14", "top10": false}], "missed": [{"driver": "Lawson", "team": "Racing Bulls", "result": "P5", "pred_rank": 11, "prob": 0.5124, "grid": 10}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P6", "pred_rank": 13, "prob": 0.4802, "grid": 15}, {"driver": "Ocon", "team": "Haas", "result": "P9", "pred_rank": 14, "prob": 0.3652, "grid": 17}, {"driver": "Albon", "team": "Williams", "result": "P8", "pred_rank": 18, "prob": 0.1582, "grid": 11}, {"driver": "Alonso", "team": "Aston Martin", "result": "P10", "pred_rank": 20, "prob": 0.1343, "grid": 21}]}}}, {"round": 7, "race_name": "Barcelona Grand Prix", "date": "2026-06-14", "scenarios": {"real": {"hits": 8, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9358, "grid": 3, "result": "P16", "top10": false}, {"driver": "Russell", "team": "Mercedes", "prob": 0.928, "grid": 1, "result": "P2", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.9003, "grid": 2, "result": "P1", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.868, "grid": 10, "result": "P15", "top10": false}, {"driver": "Piastri", "team": "McLaren", "prob": 0.778, "grid": 7, "result": "P5", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7773, "grid": 4, "result": "P3", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7405, "grid": 6, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7253, "grid": 5, "result": "P4", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6807, "grid": 8, "result": "P8", "top10": true}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.5545, "grid": 13, "result": "P10", "top10": true}], "missed": [{"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P9", "pred_rank": 11, "prob": 0.5531, "grid": 11}, {"driver": "Gasly", "team": "Alpine", "result": "P7", "pred_rank": 12, "prob": 0.5121, "grid": 14}]}, "pre": {"hits": 8, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9395, "grid": 3, "result": "P16", "top10": false}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9236, "grid": 1, "result": "P2", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8926, "grid": 10, "result": "P15", "top10": false}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8919, "grid": 2, "result": "P1", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7915, "grid": 7, "result": "P5", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7696, "grid": 4, "result": "P3", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7116, "grid": 6, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7019, "grid": 5, "result": "P4", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.6099, "grid": 14, "result": "P7", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6031, "grid": 8, "result": "P8", "top10": true}], "missed": [{"driver": "Colapinto", "team": "Alpine", "result": "P10", "pred_rank": 11, "prob": 0.569, "grid": 13}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P9", "pred_rank": 12, "prob": 0.4957, "grid": 11}]}}}, {"round": 8, "race_name": "Austrian Grand Prix", "date": "2026-06-28", "scenarios": {"real": {"hits": 9, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9248, "grid": 4, "result": "P3", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9237, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.9019, "grid": 3, "result": "P5", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8863, "grid": 2, "result": "P8", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7953, "grid": 6, "result": "P7", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7896, "grid": 7, "result": "P4", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7588, "grid": 8, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7465, "grid": 5, "result": "P2", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6666, "grid": 9, "result": "P9", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.6113, "grid": 11, "result": "P13", "top10": false}], "missed": [{"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P10", "pred_rank": 11, "prob": 0.6041, "grid": 10}]}, "pre": {"hits": 9, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9302, "grid": 4, "result": "P3", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9199, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8977, "grid": 3, "result": "P5", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8749, "grid": 2, "result": "P8", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8, "grid": 6, "result": "P7", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7986, "grid": 7, "result": "P4", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7541, "grid": 8, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.728, "grid": 5, "result": "P2", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6307, "grid": 9, "result": "P9", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.619, "grid": 11, "result": "P13", "top10": false}], "missed": [{"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P10", "pred_rank": 12, "prob": 0.5392, "grid": 10}]}}}, {"round": 9, "race_name": "British Grand Prix", "date": "2026-07-05", "scenarios": {"real": {"hits": 7, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9314, "grid": 1, "result": "P15", "top10": false}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9233, "grid": 4, "result": "P2", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.9046, "grid": 3, "result": "P3", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8847, "grid": 2, "result": "P1", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8014, "grid": 6, "result": "P4", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7938, "grid": 8, "result": "P11", "top10": false}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.784, "grid": 5, "result": "P5", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7589, "grid": 7, "result": "P20", "top10": false}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6108, "grid": 10, "result": "P6", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5929, "grid": 9, "result": "P7", "top10": true}], "missed": [{"driver": "Gasly", "team": "Alpine", "result": "P10", "pred_rank": 11, "prob": 0.4364, "grid": 15}, {"driver": "Bortoleto", "team": "Audi", "result": "P8", "pred_rank": 13, "prob": 0.2744, "grid": 11}, {"driver": "Colapinto", "team": "Alpine", "result": "P9", "pred_rank": 14, "prob": 0.2491, "grid": 19}]}, "pre": {"hits": 7, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9296, "grid": 1, "result": "P15", "top10": false}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9271, "grid": 4, "result": "P2", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.901, "grid": 3, "result": "P3", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8759, "grid": 2, "result": "P1", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8107, "grid": 8, "result": "P11", "top10": false}, {"driver": "Norris", "team": "McLaren", "prob": 0.8046, "grid": 6, "result": "P4", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7599, "grid": 5, "result": "P5", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7567, "grid": 7, "result": "P20", "top10": false}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.5913, "grid": 10, "result": "P6", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5581, "grid": 15, "result": "P10", "top10": true}], "missed": [{"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P7", "pred_rank": 11, "prob": 0.4994, "grid": 9}, {"driver": "Colapinto", "team": "Alpine", "result": "P9", "pred_rank": 12, "prob": 0.4622, "grid": 19}, {"driver": "Bortoleto", "team": "Audi", "result": "P8", "pred_rank": 15, "prob": 0.2253, "grid": 11}]}}}, {"round": 10, "race_name": "Belgian Grand Prix", "date": "2026-07-19", "scenarios": {"real": {"hits": 7, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9186, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9161, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8975, "grid": 5, "result": "P4", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8819, "grid": 4, "result": "P2", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7913, "grid": 6, "result": "P5", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7628, "grid": 2, "result": "P3", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7504, "grid": 13, "result": "P7", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6906, "grid": 9, "result": "P12", "top10": false}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6774, "grid": 7, "result": "P9", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.6094, "grid": 10, "result": "P11", "top10": false}], "missed": [{"driver": "Hadjar", "team": "Red Bull", "result": "P6", "pred_rank": 11, "prob": 0.5967, "grid": 21}, {"driver": "Colapinto", "team": "Alpine", "result": "P10", "pred_rank": 12, "prob": 0.5881, "grid": 11}, {"driver": "Bortoleto", "team": "Audi", "result": "P8", "pred_rank": 13, "prob": 0.4593, "grid": 8}]}, "pre": {"hits": 8, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9197, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9141, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8995, "grid": 5, "result": "P4", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8799, "grid": 4, "result": "P2", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7984, "grid": 13, "result": "P7", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7919, "grid": 6, "result": "P5", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7731, "grid": 21, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7356, "grid": 2, "result": "P3", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6609, "grid": 9, "result": "P12", "top10": false}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6104, "grid": 7, "result": "P9", "top10": true}], "missed": [{"driver": "Colapinto", "team": "Alpine", "result": "P10", "pred_rank": 12, "prob": 0.5097, "grid": 11}, {"driver": "Bortoleto", "team": "Audi", "result": "P8", "pred_rank": 14, "prob": 0.2839, "grid": 8}]}}}, {"round": 11, "race_name": "Hungarian Grand Prix", "date": "2026-07-26", "scenarios": {"real": {"hits": 9, "drivers": [{"driver": "Hamilton", "team": "Ferrari", "prob": 0.8969, "grid": 5, "result": "P5", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.8968, "grid": 6, "result": "P7", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8946, "grid": 2, "result": "P4", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.8928, "grid": 7, "result": "P3", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8237, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Norris", "team": "McLaren", "prob": 0.8159, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.778, "grid": 8, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7638, "grid": 4, "result": "P2", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6394, "grid": 9, "result": "P10", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6276, "grid": 11, "result": "P8", "top10": true}], "missed": [{"driver": "Hülkenberg", "team": "Audi", "result": "P9", "pred_rank": 13, "prob": 0.264, "grid": 10}]}, "pre": {"hits": 9, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9118, "grid": 7, "result": "P3", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.907, "grid": 6, "result": "P7", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8989, "grid": 5, "result": "P5", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8866, "grid": 2, "result": "P4", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8074, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Norris", "team": "McLaren", "prob": 0.7905, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7689, "grid": 8, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7492, "grid": 4, "result": "P2", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.64, "grid": 11, "result": "P8", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5915, "grid": 9, "result": "P10", "top10": true}], "missed": [{"driver": "Hülkenberg", "team": "Audi", "result": "P9", "pred_rank": 15, "prob": 0.222, "grid": 10}]}}}, {"round": 12, "race_name": "Dutch Grand Prix", "date": "2026-08-23", "scenarios": {"real": {"hits": 8, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9005, "grid": 2, "result": "P3", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.9003, "grid": 3, "result": "P2", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.89, "grid": 5, "result": "P4", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8694, "grid": 6, "result": "P5", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8168, "grid": 1, "result": "P1", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8005, "grid": 4, "result": "P6", "top10": true}, {"driver": "Lawson", "team": "Red Bull", "prob": 0.796, "grid": 8, "result": "P7", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7595, "grid": 7, "result": "Abandono", "top10": false}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5997, "grid": 10, "result": "P12", "top10": false}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5262, "grid": 11, "result": "P10", "top10": true}], "missed": [{"driver": "Hülkenberg", "team": "Audi", "result": "P8", "pred_rank": 14, "prob": 0.2245, "grid": 13}, {"driver": "Alonso", "team": "Aston Martin", "result": "P9", "pred_rank": 20, "prob": 0.1125, "grid": 18}]}, "pre": {"hits": 7, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9026, "grid": 3, "result": "P2", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.8978, "grid": 2, "result": "P3", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.892, "grid": 5, "result": "P4", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8763, "grid": 6, "result": "P5", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7948, "grid": 1, "result": "P1", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7916, "grid": 4, "result": "P6", "top10": true}, {"driver": "Lawson", "team": "Red Bull", "prob": 0.7806, "grid": 8, "result": "P7", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7621, "grid": 7, "result": "Abandono", "top10": false}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5785, "grid": 10, "result": "P12", "top10": false}, {"driver": "Tsunoda", "team": "Racing Bulls", "prob": 0.5496, "grid": 12, "result": "P11", "top10": false}], "missed": [{"driver": "Gasly", "team": "Alpine", "result": "P10", "pred_rank": 11, "prob": 0.5238, "grid": 11}, {"driver": "Hülkenberg", "team": "Audi", "result": "P8", "pred_rank": 15, "prob": 0.2566, "grid": 13}, {"driver": "Alonso", "team": "Aston Martin", "result": "P9", "pred_rank": 20, "prob": 0.1016, "grid": 18}]}}}, {"round": 13, "race_name": "Italian Grand Prix", "date": "2026-09-06", "scenarios": {"real": {"hits": 8, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9011, "grid": 2, "result": "P2", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8869, "grid": 4, "result": "P6", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8768, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.8143, "grid": 19, "result": "P1", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.795, "grid": 8, "result": "P4", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7885, "grid": 6, "result": "P5", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7328, "grid": 5, "result": "P3", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.6645, "grid": 1, "result": "P7", "top10": true}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.6303, "grid": 7, "result": "P9", "top10": true}, {"driver": "Lawson", "team": "Red Bull", "prob": 0.6082, "grid": 22, "result": "P14", "top10": false}], "missed": [{"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P8", "pred_rank": 11, "prob": 0.6053, "grid": 9}, {"driver": "Tsunoda", "team": "Racing Bulls", "result": "P10", "pred_rank": 13, "prob": 0.3419, "grid": 15}]}, "pre": {"hits": 8, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.8993, "grid": 19, "result": "P1", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.8986, "grid": 2, "result": "P2", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8856, "grid": 4, "result": "P6", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8716, "grid": 3, "result": "Abandono", "top10": false}, {"driver": "Norris", "team": "McLaren", "prob": 0.8081, "grid": 8, "result": "P4", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7922, "grid": 6, "result": "P5", "top10": true}, {"driver": "Lawson", "team": "Red Bull", "prob": 0.7746, "grid": 22, "result": "P14", "top10": false}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7229, "grid": 5, "result": "P3", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5616, "grid": 9, "result": "P8", "top10": true}, {"driver": "Tsunoda", "team": "Racing Bulls", "prob": 0.5093, "grid": 15, "result": "P10", "top10": true}], "missed": [{"driver": "Gasly", "team": "Alpine", "result": "P7", "pred_rank": 11, "prob": 0.5084, "grid": 1}, {"driver": "Colapinto", "team": "Alpine", "result": "P9", "pred_rank": 12, "prob": 0.4593, "grid": 7}]}}}, {"round": 14, "race_name": "Spanish Grand Prix", "date": "2026-09-13", "scenarios": {"real": {"hits": 9, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.913, "grid": 2, "result": "P1", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9025, "grid": 6, "result": "P5", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.889, "grid": 4, "result": "Abandono", "top10": false}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8686, "grid": 5, "result": "P4", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8426, "grid": 1, "result": "P3", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8046, "grid": 7, "result": "P8", "top10": true}, {"driver": "Lawson", "team": "Red Bull", "prob": 0.8003, "grid": 8, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7715, "grid": 3, "result": "P2", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6104, "grid": 10, "result": "P9", "top10": true}, {"driver": "Colapinto", "team": "Alpine", "prob": 0.5916, "grid": 9, "result": "P7", "top10": true}], "missed": [{"driver": "Hülkenberg", "team": "Audi", "result": "P10", "pred_rank": 14, "prob": 0.3133, "grid": 11}]}, "pre": {"hits": 8, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9119, "grid": 6, "result": "P5", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.909, "grid": 2, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8879, "grid": 4, "result": "Abandono", "top10": false}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8715, "grid": 5, "result": "P4", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.822, "grid": 1, "result": "P3", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8139, "grid": 7, "result": "P8", "top10": true}, {"driver": "Lawson", "team": "Red Bull", "prob": 0.7768, "grid": 8, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7484, "grid": 3, "result": "P2", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5935, "grid": 10, "result": "P9", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5649, "grid": 14, "result": "P12", "top10": false}], "missed": [{"driver": "Colapinto", "team": "Alpine", "result": "P7", "pred_rank": 12, "prob": 0.4701, "grid": 9}, {"driver": "Hülkenberg", "team": "Audi", "result": "P10", "pred_rank": 14, "prob": 0.2973, "grid": 11}]}}}, {"round": 15, "race_name": "Azerbaijan Grand Prix", "date": "2026-09-26", "scenarios": {"real": {"hits": 6, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9191, "grid": 1, "result": "P1", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8834, "grid": 2, "result": "P4", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8817, "grid": 6, "result": "P6", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.8673, "grid": 16, "result": "P5", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8323, "grid": 3, "result": "P13", "top10": false}, {"driver": "Norris", "team": "McLaren", "prob": 0.8317, "grid": 5, "result": "Abandono", "top10": false}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.8169, "grid": 4, "result": "P3", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.768, "grid": 8, "result": "P2", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.6533, "grid": 7, "result": "Abandono", "top10": false}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.646, "grid": 11, "result": "P12", "top10": false}], "missed": [{"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P7", "pred_rank": 12, "prob": 0.4383, "grid": 15}, {"driver": "Bearman", "team": "Haas", "result": "P9", "pred_rank": 13, "prob": 0.3878, "grid": 10}, {"driver": "Ocon", "team": "Haas", "result": "P8", "pred_rank": 14, "prob": 0.2505, "grid": 13}, {"driver": "Sainz", "team": "Williams", "result": "P10", "pred_rank": 17, "prob": 0.2037, "grid": 14}]}, "pre": {"hits": 7, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9171, "grid": 16, "result": "P5", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9139, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8873, "grid": 6, "result": "P6", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8749, "grid": 2, "result": "P4", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.831, "grid": 5, "result": "Abandono", "top10": false}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8157, "grid": 3, "result": "P13", "top10": false}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.786, "grid": 4, "result": "P3", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7812, "grid": 8, "result": "P2", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.646, "grid": 11, "result": "P12", "top10": false}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6093, "grid": 15, "result": "P7", "top10": true}], "missed": [{"driver": "Bearman", "team": "Haas", "result": "P9", "pred_rank": 15, "prob": 0.2292, "grid": 10}, {"driver": "Ocon", "team": "Haas", "result": "P8", "pred_rank": 16, "prob": 0.2127, "grid": 13}, {"driver": "Sainz", "team": "Williams", "result": "P10", "pred_rank": 17, "prob": 0.1654, "grid": 14}]}}}, {"round": 16, "race_name": "Bahrain Grand Prix in Malaysia", "date": "2026-10-04", "scenarios": {"real": {"hits": 8, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9018, "grid": 3, "result": "P2", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.8865, "grid": 7, "result": "P20", "top10": false}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8801, "grid": 2, "result": "P3", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8546, "grid": 4, "result": "P4", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8025, "grid": 5, "result": "P9", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7995, "grid": 1, "result": "P1", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7767, "grid": 6, "result": "P6", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7716, "grid": 8, "result": "P5", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.5777, "grid": 11, "result": "P7", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5538, "grid": 9, "result": "P16", "top10": false}], "missed": [{"driver": "Alonso", "team": "Aston Martin", "result": "P8", "pred_rank": 15, "prob": 0.2241, "grid": 12}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "result": "P10", "pred_rank": 18, "prob": 0.1955, "grid": 22}]}, "pre": {"hits": 9, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.9031, "grid": 7, "result": "P20", "top10": false}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.8967, "grid": 3, "result": "P2", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8688, "grid": 2, "result": "P3", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8537, "grid": 4, "result": "P4", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8017, "grid": 5, "result": "P9", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7806, "grid": 6, "result": "P6", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7637, "grid": 8, "result": "P5", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7544, "grid": 1, "result": "P1", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.5777, "grid": 11, "result": "P7", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5564, "grid": 22, "result": "P10", "top10": true}], "missed": [{"driver": "Alonso", "team": "Aston Martin", "result": "P8", "pred_rank": 20, "prob": 0.1078, "grid": 12}]}}}, {"round": 17, "race_name": "Singapore Grand Prix", "date": "2026-10-11", "scenarios": {"real": {"hits": 9, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.8933, "grid": 4, "result": "P3", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8791, "grid": 3, "result": "P6", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8656, "grid": 2, "result": "P2", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.8116, "grid": 19, "result": "P9", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.8068, "grid": 1, "result": "P1", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7985, "grid": 5, "result": "P4", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7795, "grid": 6, "result": "P5", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6719, "grid": 8, "result": "P7", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.6506, "grid": 22, "result": "P10", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6227, "grid": 9, "result": "P15", "top10": false}], "missed": [{"driver": "Hülkenberg", "team": "Audi", "result": "P8", "pred_rank": 12, "prob": 0.4005, "grid": 10}]}, "pre": {"hits": 9, "drivers": [{"driver": "Russell", "team": "Mercedes", "prob": 0.8949, "grid": 19, "result": "P9", "top10": true}, {"driver": "Antonelli", "team": "Mercedes", "prob": 0.8926, "grid": 4, "result": "P3", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.873, "grid": 3, "result": "P6", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8547, "grid": 2, "result": "P2", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7977, "grid": 5, "result": "P4", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7845, "grid": 22, "result": "P10", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7828, "grid": 6, "result": "P5", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7775, "grid": 1, "result": "P1", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6074, "grid": 8, "result": "P7", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5599, "grid": 9, "result": "P15", "top10": false}], "missed": [{"driver": "Hülkenberg", "team": "Audi", "result": "P8", "pred_rank": 13, "prob": 0.3093, "grid": 10}]}}}, {"round": 18, "race_name": "United States Grand Prix", "date": "2026-10-25", "scenarios": {"real": {"hits": 10, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9167, "grid": 1, "result": "P1", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.8977, "grid": 6, "result": "P8", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8858, "grid": 5, "result": "P4", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8796, "grid": 4, "result": "P2", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.8316, "grid": 3, "result": "P6", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.822, "grid": 2, "result": "P3", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.798, "grid": 8, "result": "P5", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7898, "grid": 7, "result": "P7", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.6275, "grid": 9, "result": "P9", "top10": true}, {"driver": "Gasly", "team": "Alpine", "prob": 0.466, "grid": 10, "result": "P10", "top10": true}], "missed": []}, "pre": {"hits": 9, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.907, "grid": 1, "result": "P1", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.904, "grid": 6, "result": "P8", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8881, "grid": 5, "result": "P4", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8794, "grid": 4, "result": "P2", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8154, "grid": 8, "result": "P5", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8002, "grid": 7, "result": "P7", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.798, "grid": 2, "result": "P3", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7942, "grid": 3, "result": "P6", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.5825, "grid": 9, "result": "P9", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.512, "grid": 14, "result": "P12", "top10": false}], "missed": [{"driver": "Gasly", "team": "Alpine", "result": "P10", "pred_rank": 11, "prob": 0.4645, "grid": 10}]}}}, {"round": 19, "race_name": "Mexico City Grand Prix", "date": "2026-11-01", "scenarios": {"real": {"hits": 7, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9108, "grid": 4, "result": "P3", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9092, "grid": 2, "result": "P6", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8994, "grid": 1, "result": "P2", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8926, "grid": 3, "result": "P4", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.8288, "grid": 7, "result": "P9", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.8204, "grid": 5, "result": "P1", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8147, "grid": 6, "result": "P5", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7615, "grid": 12, "result": "P13", "top10": false}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.6283, "grid": 8, "result": "Abandono", "top10": false}, {"driver": "Gasly", "team": "Alpine", "prob": 0.5059, "grid": 9, "result": "P17", "top10": false}], "missed": [{"driver": "Bortoleto", "team": "Audi", "result": "P8", "pred_rank": 13, "prob": 0.3335, "grid": 13}, {"driver": "Lawson", "team": "Racing Bulls", "result": "P7", "pred_rank": 14, "prob": 0.3051, "grid": 22}, {"driver": "Hirakawa", "team": "Haas", "result": "P10", "pred_rank": 17, "prob": 0.2387, "grid": 18}]}, "pre": {"hits": 8, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.9108, "grid": 4, "result": "P3", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.9034, "grid": 2, "result": "P6", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8906, "grid": 1, "result": "P2", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8885, "grid": 3, "result": "P4", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8185, "grid": 6, "result": "P5", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.8179, "grid": 5, "result": "P1", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.8171, "grid": 7, "result": "P9", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.8088, "grid": 12, "result": "P13", "top10": false}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.5816, "grid": 22, "result": "P7", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5533, "grid": 8, "result": "Abandono", "top10": false}], "missed": [{"driver": "Bortoleto", "team": "Audi", "result": "P8", "pred_rank": 14, "prob": 0.3323, "grid": 13}, {"driver": "Hirakawa", "team": "Haas", "result": "P10", "pred_rank": 16, "prob": 0.2506, "grid": 18}]}}}, {"round": 20, "race_name": "Brazilian Grand Prix", "date": "2026-11-08", "scenarios": {"real": {"hits": 10, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.8933, "grid": 2, "result": "P5", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.8669, "grid": 7, "result": "P4", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.8169, "grid": 1, "result": "P1", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.8063, "grid": 5, "result": "P3", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.7922, "grid": 14, "result": "P8", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.7647, "grid": 20, "result": "P9", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.7439, "grid": 10, "result": "P6", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.7056, "grid": 3, "result": "P7", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.6446, "grid": 21, "result": "P2", "top10": true}, {"driver": "Hülkenberg", "team": "Audi", "prob": 0.5827, "grid": 4, "result": "P10", "top10": true}], "missed": []}, "pre": {"hits": 9, "drivers": [{"driver": "Antonelli", "team": "Mercedes", "prob": 0.8854, "grid": 2, "result": "P5", "top10": true}, {"driver": "Russell", "team": "Mercedes", "prob": 0.88, "grid": 7, "result": "P4", "top10": true}, {"driver": "Hamilton", "team": "Ferrari", "prob": 0.8726, "grid": 20, "result": "P9", "top10": true}, {"driver": "Leclerc", "team": "Ferrari", "prob": 0.8635, "grid": 14, "result": "P8", "top10": true}, {"driver": "Norris", "team": "McLaren", "prob": 0.7937, "grid": 1, "result": "P1", "top10": true}, {"driver": "Max Verstappen", "team": "Red Bull", "prob": 0.7913, "grid": 21, "result": "P2", "top10": true}, {"driver": "Piastri", "team": "McLaren", "prob": 0.776, "grid": 10, "result": "P6", "top10": true}, {"driver": "Hadjar", "team": "Red Bull", "prob": 0.7752, "grid": 5, "result": "P3", "top10": true}, {"driver": "Lawson", "team": "Racing Bulls", "prob": 0.5645, "grid": 3, "result": "P7", "top10": true}, {"driver": "Arvid Lindblad", "team": "Racing Bulls", "prob": 0.5208, "grid": 18, "result": "P11", "top10": false}], "missed": [{"driver": "Hülkenberg", "team": "Audi", "result": "P10", "pred_rank": 12, "prob": 0.3453, "grid": 4}]}}}], "summary": {"real": {"races": 20, "hits": 154, "possible": 200, "accuracy": 0.7932, "auc": 0.8646, "perfect": 2}, "pre": {"races": 19, "hits": 146, "possible": 190, "accuracy": 0.7919, "auc": 0.8603, "perfect": 0}}, "last_race": "Brazilian Grand Prix", "last_round": 20};
+
+function fmtPct(x, digits=1){ return (x*100).toFixed(digits) + '%'; }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const HINTS = {
+  real: 'Previsão feita depois do classificatório, com a posição oficial de largada.',
+  pre: 'Previsão feita antes do classificatório, com o grid médio do piloto na temporada.'
+};
+let scenario = 'real';
+try { const s = localStorage.getItem('cmp-scenario'); if (s === 'pre' || s === 'real') scenario = s; } catch(e) {}
+
+function racesFor(sc){ return DATA.races.filter(r => r.scenarios[sc]); }
+
+function renderTiles(sc){
+  const sm = DATA.summary[sc], rs = racesFor(sc);
+  document.getElementById('t-hits').textContent = sm.hits + '/' + sm.possible;
+  document.getElementById('t-hits-sub').textContent = fmtPct(sm.hits/sm.possible) + ' das vagas · ' + sm.races + ' corridas';
+  document.getElementById('t-avg').textContent = (sm.hits/sm.races).toFixed(1).replace('.', ',');
+  document.getElementById('t-acc').textContent = fmtPct(sm.accuracy);
+  document.getElementById('t-auc').textContent = 'AUC ' + sm.auc.toFixed(3) + ' · todos os pilotos';
+  document.getElementById('t-perfect').textContent = sm.perfect;
+  const worst = rs.reduce((a,b) => b.scenarios[sc].hits < a.scenarios[sc].hits ? b : a);
+  document.getElementById('t-worst').textContent = 'pior: ' + worst.scenarios[sc].hits + '/10 (' + shortName(worst.race_name) + ')';
+}
+
+function shortName(n){
+  return n.replace(' Grand Prix in Malaysia', ' (Malásia)').replace(' Grand Prix', '');
+}
+
+function renderChart(sc){
+  const svg = document.getElementById('chart-hits'), tt = document.getElementById('tt-hits');
+  const rs = racesFor(sc);
+  const W = 1040, H = 220, m = {l:34, r:8, t:12, b:30};
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const n = DATA.races.length, slot = iw / n, bw = Math.min(30, slot - 8);
+  const y = v => m.t + ih - (v/10) * ih;
+  let s = '';
+  [0, 5, 10].forEach(v => {
+    s += `<line class="grid-line" x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}"/>`;
+    s += `<text class="axis-label" x="${m.l-8}" y="${y(v)+3.5}" text-anchor="end">${v}</text>`;
+  });
+  DATA.races.forEach((r, i) => {
+    const cx = m.l + slot*i + slot/2;
+    s += `<text class="axis-label" x="${cx}" y="${H-10}" text-anchor="middle">R${r.round}</text>`;
+    const sco = r.scenarios[sc];
+    if (!sco) {
+      s += `<text class="axis-label" x="${cx}" y="${y(0)-6}" text-anchor="middle">—</text>`;
+      return;
+    }
+    const h = Math.max(0, y(0) - y(sco.hits)), x = cx - bw/2, top = y(sco.hits), rad = Math.min(4, h);
+    const d = `M${x},${y(0)} V${top+rad} Q${x},${top} ${x+rad},${top} H${x+bw-rad} Q${x+bw},${top} ${x+bw},${top+rad} V${y(0)} Z`;
+    s += `<g class="bar-group" data-i="${i}"><path class="bar" d="${d}"/>`
+       + `<rect class="bar-hit" x="${cx-slot/2}" y="${m.t}" width="${slot}" height="${ih}"/></g>`;
+  });
+  svg.innerHTML = s;
+  svg.querySelectorAll('.bar-group').forEach(g => {
+    const r = DATA.races[+g.dataset.i];
+    g.addEventListener('mousemove', ev => {
+      const box = svg.parentElement.getBoundingClientRect();
+      tt.textContent = `R${r.round} · ${shortName(r.race_name)}: ${r.scenarios[sc].hits}/10`;
+      tt.style.left = Math.min(ev.clientX - box.left + 12, box.width - 220) + 'px';
+      tt.style.top = (ev.clientY - box.top - 28) + 'px';
+      tt.style.opacity = 1;
+    });
+    g.addEventListener('mouseleave', () => { tt.style.opacity = 0; });
+  });
+  const tbl = document.getElementById('table-hits');
+  tbl.innerHTML = '<tr><th>Corrida</th><th>Com grid real</th><th>Antes do classificatório</th></tr>' +
+    DATA.races.map(r => `<tr><td>R${r.round} · ${esc(shortName(r.race_name))}</td>` +
+      `<td>${r.scenarios.real ? r.scenarios.real.hits + '/10' : '—'}</td>` +
+      `<td>${r.scenarios.pre ? r.scenarios.pre.hits + '/10' : '—'}</td></tr>`).join('');
+}
+
+function renderCards(sc){
+  const wrap = document.getElementById('races-wrap');
+  wrap.innerHTML = '';
+  racesFor(sc).slice().reverse().forEach(race => {
+    const sco = race.scenarios[sc];
+    const rows = sco.drivers.map((d, i) => `
+      <div class="cmp-row">
+        <div class="driver-rank tnum">${i+1}</div>
+        <div class="driver-name-wrap">
+          <span class="driver-name">${esc(d.driver)}</span>
+          <span class="driver-team">${esc(d.team)} <span class="grid-note">· largou ${d.grid > 0 ? d.grid + 'º' : 'do pit lane'}</span></span>
+          <div class="prob-bar-track"><div class="prob-bar-fill" style="width:${(d.prob*100).toFixed(1)}%"></div></div>
+        </div>
+        <div class="driver-prob tnum">${fmtPct(d.prob)}</div>
+        <div class="res-badge ${d.top10 ? 'ok' : 'miss'}" title="${d.top10 ? 'Terminou no Top 10' : 'Ficou fora do Top 10'}"><span class="ic" aria-hidden="true">${d.top10 ? '✓' : '✗'}</span>${esc(d.result)}</div>
+      </div>`).join('');
+    const missed = sco.missed.length
+      ? sco.missed.sort((a,b) => parseInt(a.result.slice(1)) - parseInt(b.result.slice(1))).map(m =>
+          `<span class="m-item"><b>${esc(m.driver)}</b> (${esc(m.team)}) — chegou ${esc(m.result)}, largou ${m.grid}º · previsto em ${m.pred_rank}º, ${fmtPct(m.prob)}</span>`).join('')
+      : '<span class="m-item">Nenhum — o modelo acertou os 10.</span>';
+    const dateFmt = new Date(race.date + 'T00:00:00').toLocaleDateString('pt-BR', {day:'2-digit', month:'short'});
+    wrap.insertAdjacentHTML('beforeend', `
+      <div class="panel race-card">
+        <div class="race-head">
+          <div>
+            <h3>${esc(race.race_name)}</h3>
+            <div class="race-date">Rodada ${race.round} · ${dateFmt}/${DATA.season}</div>
+          </div>
+          <span class="hits-pill ${sco.hits === 10 ? 'perfect' : ''}" title="${sco.hits} de 10 pilotos previstos terminaram no Top 10"><b>${sco.hits}</b>/10</span>
+        </div>
+        <div style="margin-top:12px;">${rows}</div>
+        <div class="missed"><span class="lbl">Terminaram no Top 10 fora da previsão</span>${missed}</div>
+      </div>`);
+  });
+}
+
+function render(){
+  document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.sc === scenario));
+  document.getElementById('sc-hint').textContent = HINTS[scenario];
+  renderTiles(scenario); renderChart(scenario); renderCards(scenario);
+}
+
+document.getElementById('meta-races').textContent = DATA.races.length;
+document.getElementById('meta-last').textContent = DATA.last_race.replace('Grand Prix', 'GP') + ' (R' + DATA.last_round + ')';
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+  scenario = b.dataset.sc;
+  try { localStorage.setItem('cmp-scenario', scenario); } catch(e) {}
+  render();
+}));
+render();
+</script>
