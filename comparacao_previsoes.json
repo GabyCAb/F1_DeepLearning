@@ -4251,26 +4251,255 @@
           ]
         }
       }
+    },
+    {
+      "round": 21,
+      "race_name": "Las Vegas Grand Prix",
+      "date": "2026-11-22",
+      "scenarios": {
+        "real": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8988,
+              "grid": 2,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.892,
+              "grid": 6,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8502,
+              "grid": 11,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8429,
+              "grid": 10,
+              "result": "P10",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.8414,
+              "grid": 4,
+              "result": "P15",
+              "top10": false
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.8397,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.827,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.6984,
+              "grid": 17,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.6652,
+              "grid": 7,
+              "result": "P14",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.6479,
+              "grid": 5,
+              "result": "Abandono",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P6",
+              "pred_rank": 11,
+              "prob": 0.501,
+              "grid": 9
+            },
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P5",
+              "pred_rank": 12,
+              "prob": 0.4873,
+              "grid": 8
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P8",
+              "pred_rank": 20,
+              "prob": 0.149,
+              "grid": 20
+            }
+          ]
+        },
+        "pre": {
+          "hits": 7,
+          "drivers": [
+            {
+              "driver": "Antonelli",
+              "team": "Mercedes",
+              "prob": 0.8996,
+              "grid": 6,
+              "result": "P4",
+              "top10": true
+            },
+            {
+              "driver": "Russell",
+              "team": "Mercedes",
+              "prob": 0.8915,
+              "grid": 2,
+              "result": "P9",
+              "top10": true
+            },
+            {
+              "driver": "Hamilton",
+              "team": "Ferrari",
+              "prob": 0.8766,
+              "grid": 11,
+              "result": "P7",
+              "top10": true
+            },
+            {
+              "driver": "Leclerc",
+              "team": "Ferrari",
+              "prob": 0.8718,
+              "grid": 10,
+              "result": "P10",
+              "top10": true
+            },
+            {
+              "driver": "Norris",
+              "team": "McLaren",
+              "prob": 0.8183,
+              "grid": 3,
+              "result": "P2",
+              "top10": true
+            },
+            {
+              "driver": "Max Verstappen",
+              "team": "Red Bull",
+              "prob": 0.8142,
+              "grid": 1,
+              "result": "P1",
+              "top10": true
+            },
+            {
+              "driver": "Hadjar",
+              "team": "Red Bull",
+              "prob": 0.8141,
+              "grid": 4,
+              "result": "P15",
+              "top10": false
+            },
+            {
+              "driver": "Piastri",
+              "team": "McLaren",
+              "prob": 0.8004,
+              "grid": 17,
+              "result": "P3",
+              "top10": true
+            },
+            {
+              "driver": "Lawson",
+              "team": "Racing Bulls",
+              "prob": 0.5917,
+              "grid": 7,
+              "result": "P14",
+              "top10": false
+            },
+            {
+              "driver": "Arvid Lindblad",
+              "team": "Racing Bulls",
+              "prob": 0.5286,
+              "grid": 5,
+              "result": "Abandono",
+              "top10": false
+            }
+          ],
+          "missed": [
+            {
+              "driver": "Gasly",
+              "team": "Alpine",
+              "result": "P5",
+              "pred_rank": 11,
+              "prob": 0.45,
+              "grid": 8
+            },
+            {
+              "driver": "Colapinto",
+              "team": "Alpine",
+              "result": "P6",
+              "pred_rank": 12,
+              "prob": 0.3945,
+              "grid": 9
+            },
+            {
+              "driver": "Sainz",
+              "team": "Williams",
+              "result": "P8",
+              "pred_rank": 17,
+              "prob": 0.2147,
+              "grid": 20
+            }
+          ]
+        }
+      }
     }
   ],
   "summary": {
     "real": {
-      "races": 20,
-      "hits": 154,
-      "possible": 200,
-      "accuracy": 0.7932,
-      "auc": 0.8646,
+      "races": 21,
+      "hits": 161,
+      "possible": 210,
+      "accuracy": 0.7922,
+      "auc": 0.8638,
       "perfect": 2
     },
     "pre": {
-      "races": 19,
-      "hits": 146,
-      "possible": 190,
-      "accuracy": 0.7919,
-      "auc": 0.8603,
+      "races": 20,
+      "hits": 153,
+      "possible": 200,
+      "accuracy": 0.7886,
+      "auc": 0.8606,
       "perfect": 0
     }
   },
-  "last_race": "Brazilian Grand Prix",
-  "last_round": 20
+  "last_race": "Las Vegas Grand Prix",
+  "last_round": 21
 }

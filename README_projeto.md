@@ -11,8 +11,8 @@ Essa é uma classificação binária: `1` = terminou no Top 10, `0` = não termi
 ## Fonte dos dados
 
 - **API:** [jolpica-f1](https://github.com/jolpica/jolpica-f1) — sucessor open-source e comunitário da antiga Ergast Developer API, disponível em `api.jolpi.ca`.
-- **Arquivos usados:** `results.csv` (26.313 linhas — um piloto por corrida, 1950 a 2026) e `races.csv` (calendário e circuitos: localização, latitude/longitude).
-- **Atualização:** os dados foram complementados via a API para cobrir até o **GP do Brasil (08/11/2026, rodada 20)**, já que o dataset original (Kaggle, `fleongg/formula-1-results-and-standings-1950-present`) estava parado no GP de Mônaco (07/06/2026). A última atualização (04/11/2026) também corrigiu o calendário de 2026, que passou a ter 23 etapas com a inclusão do "Bahrain Grand Prix in Malaysia" (Sepang, rodada 16) — com isso o GP do Brasil virou a rodada 20.
+- **Arquivos usados:** `results.csv` (26.335 linhas — um piloto por corrida, 1950 a 2026) e `races.csv` (calendário e circuitos: localização, latitude/longitude).
+- **Atualização:** os dados foram complementados via a API para cobrir até o **GP de Las Vegas (22/11/2026, rodada 21)**, já que o dataset original (Kaggle, `fleongg/formula-1-results-and-standings-1950-present`) estava parado no GP de Mônaco (07/06/2026). A última atualização (04/11/2026) também corrigiu o calendário de 2026, que passou a ter 23 etapas com a inclusão do "Bahrain Grand Prix in Malaysia" (Sepang, rodada 16) — com isso o GP do Brasil virou a rodada 20.
 - **Licença:** CC BY-NC-SA 4.0 (uso não comercial, com atribuição) — projeto de fins educacionais.
 
 ## Por que "Top 10" e não "pontuação"
@@ -113,26 +113,26 @@ O grid de largada continua sendo o preditor mais forte (quem larga na frente ten
 
 Como aplicação prática, o modelo é usado para estimar a probabilidade de Top 10 nas próximas corridas de 2026, com a forma da temporada até a última corrida disputada. A previsão é feita por `prever_proximas_corridas.py`, que o notebook chama na seção 9 e que também pode ser rodado sozinho depois de cada corrida, sem retreinar o modelo.
 
-**Previsão atual — forma até o GP do Brasil (rodada 20), modelo corrigido:**
+**Previsão atual — forma até o GP de Las Vegas (rodada 21), modelo corrigido:**
 
 | Corrida | Top 10 previsto (em ordem de probabilidade) | Logo atrás |
 |---|---|---|
-| GP de Las Vegas (rodada 21, 22/11) | Antonelli 90,0%, Russell 89,2%, Hamilton 87,7%, Leclerc 87,3%, Norris 81,8%, Verstappen 81,4%, Hadjar 80,9%, Piastri 79,7%, Lawson 59,2%, Lindblad 53,2% | Gasly 45,0%, Colapinto 38,3%, Hülkenberg 36,7% |
-| GP do Catar (rodada 22, 29/11) | Antonelli 89,4%, Russell 88,6%, Hamilton 87,2%, Leclerc 86,3%, Norris 80,9%, Verstappen 80,0%, Hadjar 79,9%, Piastri 78,5%, Lawson 61,0%, Lindblad 55,2% | Gasly 48,9%, Colapinto 38,4%, Hülkenberg 37,5% |
-| GP de Abu Dhabi (rodada 23, 06/12) | Antonelli 90,7%, Russell 90,2%, Hamilton 88,8%, Leclerc 88,2%, Verstappen 83,1%, Norris 82,9%, Hadjar 82,4%, Piastri 81,4%, Lawson 61,0%, Lindblad 54,8% | Gasly 48,6%, Colapinto 39,5%, Hülkenberg 34,1% |
+| GP do Catar (rodada 22, 29/11) | Antonelli 89,0%, Russell 88,2%, Hamilton 86,6%, Leclerc 85,7%, Norris 81,7%, Verstappen 80,7%, Hadjar 80,0%, Piastri 78,9%, Lawson 60,7%, Lindblad 54,7% | Gasly 52,1%, Colapinto 41,9%, Hülkenberg 37,6% |
+| GP de Abu Dhabi (rodada 23, 06/12) | Antonelli 90,4%, Russell 89,9%, Hamilton 88,2%, Leclerc 87,6%, Norris 83,7%, Verstappen 83,6%, Hadjar 82,6%, Piastri 81,9%, Lawson 60,5%, Lindblad 54,3% | Gasly 51,6%, Colapinto 43,3%, Hülkenberg 34,1% |
 
-As quatro equipes de ponta (Mercedes, Ferrari, McLaren e Red Bull) ocupam as 8 primeiras vagas com folga (78%–91%). As duas últimas ficam com a Racing Bulls (Lawson e Lindblad, 53%–61%), com Gasly logo atrás, perto de 50%. Probabilidades completas (os 22 pilotos, mais uma variante "forma recente" que usa o grid médio das últimas 5 corridas) em `predicoes_proximas_corridas_2026.csv`.
+As quatro equipes de ponta (Mercedes, Ferrari, McLaren e Red Bull) ocupam as 8 primeiras vagas com folga (79%–90%). As duas últimas ficam com a Racing Bulls (Lawson e Lindblad, 54%–61%), com Gasly logo atrás, perto de 52%. Probabilidades completas (os 22 pilotos, mais uma variante "forma recente" que usa o grid médio das últimas 5 corridas) em `predicoes_proximas_corridas_2026.csv`.
 
 **Escalações consideradas:** Hadjar na Red Bull e Lawson na Racing Bulls (desde a rodada 15); Tsunoda fora do grid. Na Haas, Esteban Ocon foi afastado pelo resto de 2026 e o brasileiro **Rafael Câmara** estreou no GP do Brasil (mantido nas demais etapas por hipótese — ajuste `SUBSTITUICOES` no script se mudar). Pilotos com menos de 3 corridas na temporada, como Câmara, recebem as médias de grid e de posição do carro (`MIN_CORRIDAS`), para que uma corrida isolada não distorça a previsão.
 
 **Grid real quando disponível:** depois do classificatório, a posição oficial de largada de cada piloto pode ser informada em `GRID_REAL` no script (foi assim no GP do Brasil). Sem ela, o `grid` é substituído pela média de grid do piloto na temporada — uma projeção da tendência de desempenho, não do resultado do fim de semana. O modelo prevê "Top 10 sim/não", não a ordem de chegada: as listas acima estão ordenadas por probabilidade, não por posição prevista.
 
-**Previsões × resultados reais (`comparacao_previsoes.html`).** Um segundo painel, no mesmo visual do dashboard, refaz a previsão de cada corrida já disputada de 2026 usando só o que se sabia antes dela e compara com o resultado real. Ele mostra o Top 10 previsto, a posição de chegada de cada piloto (✓ terminou no Top 10, ✗ ficou fora) e quem pontuou fora da previsão. Há dois cenários: **com grid real** (depois do classificatório) e **antes do classificatório** (grid médio, a mesma aproximação usada para as corridas futuras). Até o GP do Brasil, o modelo acertou 154 de 200 vagas no Top 10 com o grid real (7,7 por corrida, 10/10 nos EUA e no Brasil) e 146 de 190 antes do classificatório. É uma simulação retrospectiva com o modelo atual, não o registro das previsões publicadas na época. Para atualizar depois de cada corrida: `python comparar_previsoes.py`.
+**Previsões × resultados reais (`comparacao_previsoes.html`).** Um segundo painel, no mesmo visual do dashboard, refaz a previsão de cada corrida já disputada de 2026 usando só o que se sabia antes dela e compara com o resultado real. Ele mostra o Top 10 previsto, a posição de chegada de cada piloto (✓ terminou no Top 10, ✗ ficou fora) e quem pontuou fora da previsão. Há dois cenários: **com grid real** (depois do classificatório) e **antes do classificatório** (grid médio, a mesma aproximação usada para as corridas futuras). Até o GP de Las Vegas, o modelo acertou 161 de 210 vagas no Top 10 com o grid real (7,7 por corrida, 10/10 nos EUA e no Brasil) e 153 de 200 antes do classificatório. É uma simulação retrospectiva com o modelo atual, não o registro das previsões publicadas na época. Para atualizar depois de cada corrida: `python comparar_previsoes.py`.
 
 **Histórico das previsões de 2026:**
 - **04/11 (forma até o México, modelo anterior):** a projeção feita com dados até a Holanda tinha acertado 7 de 10 pilotos do Top 10 na Itália, 9 na Espanha e 6 no Azerbaijão.
 - **07/11 (GP do Brasil com o grid real, modelo anterior):** as punições de motor (Hamilton, Verstappen e Pérez no fundo; Leclerc −10; Russell −5) derrubaram Hamilton para 24% e Verstappen para 18%. A previsão acertou 7 de 10. Verstappen terminou em 2º, Hamilton em 9º e Leclerc em 8º.
 - **09/11 (modelo corrigido):** com o mesmo grid, o modelo corrigido dá 76% para Hamilton, 64% para Verstappen e 79% para Leclerc, e acerta os 10 pilotos do Top 10 do Brasil.
+- **23/11 (GP de Las Vegas):** a previsão feita antes do classificatório acertou 7 de 10. Verstappen venceu, e Norris, Piastri (largando de 17º), Antonelli, Hamilton, Russell e Leclerc também pontuaram como previsto. Erraram Hadjar (P15), Lawson (P14) e Lindblad (abandono); no lugar deles entraram as duas Alpine (Gasly P5 e Colapinto P6, que estavam logo atrás na previsão) e Sainz (P8, largando de 20º). Com o grid real, o resultado também seria 7 de 10.
 
 ## Possíveis melhorias futuras
 

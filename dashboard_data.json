@@ -224,63 +224,6 @@
   },
   "predictions": [
     {
-      "round": 21,
-      "race_name": "Las Vegas Grand Prix",
-      "date": "2026-11-22",
-      "drivers": [
-        {
-          "driver": "Antonelli",
-          "constructor": "Mercedes",
-          "prob": 0.8996
-        },
-        {
-          "driver": "Russell",
-          "constructor": "Mercedes",
-          "prob": 0.8921
-        },
-        {
-          "driver": "Hamilton",
-          "constructor": "Ferrari",
-          "prob": 0.8766
-        },
-        {
-          "driver": "Leclerc",
-          "constructor": "Ferrari",
-          "prob": 0.8732
-        },
-        {
-          "driver": "Norris",
-          "constructor": "McLaren",
-          "prob": 0.8183
-        },
-        {
-          "driver": "Max Verstappen",
-          "constructor": "Red Bull",
-          "prob": 0.8142
-        },
-        {
-          "driver": "Hadjar",
-          "constructor": "Red Bull",
-          "prob": 0.8087
-        },
-        {
-          "driver": "Piastri",
-          "constructor": "McLaren",
-          "prob": 0.7968
-        },
-        {
-          "driver": "Lawson",
-          "constructor": "Racing Bulls",
-          "prob": 0.5917
-        },
-        {
-          "driver": "Arvid Lindblad",
-          "constructor": "Racing Bulls",
-          "prob": 0.5324
-        }
-      ]
-    },
-    {
       "round": 22,
       "race_name": "Qatar Grand Prix",
       "date": "2026-11-29",
@@ -288,52 +231,52 @@
         {
           "driver": "Antonelli",
           "constructor": "Mercedes",
-          "prob": 0.894
+          "prob": 0.8901
         },
         {
           "driver": "Russell",
           "constructor": "Mercedes",
-          "prob": 0.886
+          "prob": 0.8822
         },
         {
           "driver": "Hamilton",
           "constructor": "Ferrari",
-          "prob": 0.8721
+          "prob": 0.866
         },
         {
           "driver": "Leclerc",
           "constructor": "Ferrari",
-          "prob": 0.8633
+          "prob": 0.8566
         },
         {
           "driver": "Norris",
           "constructor": "McLaren",
-          "prob": 0.8086
+          "prob": 0.8167
         },
         {
           "driver": "Max Verstappen",
           "constructor": "Red Bull",
-          "prob": 0.8005
+          "prob": 0.8066
         },
         {
           "driver": "Hadjar",
           "constructor": "Red Bull",
-          "prob": 0.799
+          "prob": 0.8005
         },
         {
           "driver": "Piastri",
           "constructor": "McLaren",
-          "prob": 0.785
+          "prob": 0.7894
         },
         {
           "driver": "Lawson",
           "constructor": "Racing Bulls",
-          "prob": 0.6102
+          "prob": 0.6066
         },
         {
           "driver": "Arvid Lindblad",
           "constructor": "Racing Bulls",
-          "prob": 0.552
+          "prob": 0.5473
         }
       ]
     },
@@ -345,60 +288,60 @@
         {
           "driver": "Antonelli",
           "constructor": "Mercedes",
-          "prob": 0.9074
+          "prob": 0.9039
         },
         {
           "driver": "Russell",
           "constructor": "Mercedes",
-          "prob": 0.9024
+          "prob": 0.899
         },
         {
           "driver": "Hamilton",
           "constructor": "Ferrari",
-          "prob": 0.8879
+          "prob": 0.8825
         },
         {
           "driver": "Leclerc",
           "constructor": "Ferrari",
-          "prob": 0.882
-        },
-        {
-          "driver": "Max Verstappen",
-          "constructor": "Red Bull",
-          "prob": 0.8313
+          "prob": 0.8762
         },
         {
           "driver": "Norris",
           "constructor": "McLaren",
-          "prob": 0.8291
+          "prob": 0.8367
+        },
+        {
+          "driver": "Max Verstappen",
+          "constructor": "Red Bull",
+          "prob": 0.8365
         },
         {
           "driver": "Hadjar",
           "constructor": "Red Bull",
-          "prob": 0.8242
+          "prob": 0.8257
         },
         {
           "driver": "Piastri",
           "constructor": "McLaren",
-          "prob": 0.8142
+          "prob": 0.8193
         },
         {
           "driver": "Lawson",
           "constructor": "Racing Bulls",
-          "prob": 0.6103
+          "prob": 0.6053
         },
         {
           "driver": "Arvid Lindblad",
           "constructor": "Racing Bulls",
-          "prob": 0.548
+          "prob": 0.5426
         }
       ]
     }
   ],
   "data_status": {
-    "last_round": 20,
-    "last_race": "Brazilian Grand Prix",
-    "season_eval_auc_2026": 0.8646,
-    "season_eval_acc_2026": 0.7932
+    "last_round": 21,
+    "last_race": "Las Vegas Grand Prix",
+    "season_eval_auc_2026": 0.8638,
+    "season_eval_acc_2026": 0.7922
   }
 }
